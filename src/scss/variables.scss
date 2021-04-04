@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+$body-font-family: 'Montserrat', sans-serif;
+$small-font: 'Dancing Script', cursive;
+$title-font: 'Libre Baskerville', serif;
+$heading-font-family: 'Libre Baskerville', serif;
+$headings : (
+    (
+      'h1': (
+        'font-family': $body-font-family,
+        'text-transform': false
+      ),
+      'subtitle-1': (
+        'font-family': $heading-font-family,
+        'text-transform': false
+      ),
+      'h6': (
+        'font-family': $small-font,
+        'text-transform': false
+      )
+    )
+);
+
+@import "~vuetify/src/styles/styles.sass";
