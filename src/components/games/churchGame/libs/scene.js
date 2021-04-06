@@ -10,7 +10,7 @@
  */
 import * as yorbControls from './yorbControls.js';
 import * as environment from './environment.js';
-import * as index from './index.js';
+import * as index from './index1.js';
 import * as THREE from 'three';
 
 class Scene {
@@ -60,6 +60,7 @@ class Scene {
         this.scene.add (sphere2);
 
     const audioElement1 = document.getElementById( 'track1' )
+    console.log('audioElement1',audioElement1);
         audioElement1.play();
         this.camera.add (this.audioElement1)
 
@@ -141,7 +142,7 @@ class Scene {
     this.controls.maxPolarAngle = Math.PI / 2;*/
 
     
-    this.controls = new yorbControls(this.scene,this.camera, this.renderer);
+    this.controls = new yorbControls.yorbControls(this.scene,this.camera, this.renderer);
 
     // Start the update loop
     this.update();
@@ -223,7 +224,7 @@ class Scene {
   updateClientPositions(_clientProps) {
     for (let _id in _clientProps) {
       // we'll update ourselves separately to avoid lag...
-      if (_id != index.id) {
+      if (_id != 0) {
         index.clients[_id].desiredPosition = new THREE.Vector3().fromArray(
           _clientProps[_id].position
         );
@@ -463,6 +464,6 @@ function makeVideoMaterial(_id) {
   return videoMaterial;
 }
 
-exports.Scene = Scene;
+export default Scene;
 
 

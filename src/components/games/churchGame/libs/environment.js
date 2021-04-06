@@ -83,4 +83,6 @@ new MTLLoader( manager )
 */
 }
 
-exports.createEnvironment = createEnvironment ;
+export {
+  createEnvironment
+} 

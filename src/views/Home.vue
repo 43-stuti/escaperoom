@@ -32,6 +32,8 @@
 
 <script>
 // @ is an alias to /src
+
+
 export default {
   name: 'Home',
   components: {
@@ -43,7 +45,8 @@ export default {
         CoverText : 'text-h4 text-sm-h4 text-md-h2 text-lg-h1 text-xl-h1 font-weight-black justify-center',
         CoverTextLight : 'text-h4 text-sm-h4 text-md-h4 text-lg-h4 text-xl-h1 font-weight-regular text-left green--text text--darken-2 mt-12',
         SubText : 'mt-4 text-body-1 font-weight-medium justify-center'
-      }
+      },
+      socket:null
     }
   },
   computed: {
@@ -56,6 +59,8 @@ export default {
             return {height: '650px'};
         }
       }
+    },
+     mounted() {
     }
 }
 </script>

@@ -387,4 +387,6 @@ import * as THREE from 'three';
         this.camera.lookAt(this.camera.target)
     }
 }
-exports.yorbControls = yorbControls ;
+export {
+    yorbControls
+}  

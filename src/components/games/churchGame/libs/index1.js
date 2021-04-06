@@ -10,7 +10,6 @@
  */
 
 
-import io from 'socket.io';
 import Scene from './scene.js';
 
 // socket.io
@@ -100,12 +99,12 @@ function addTracksToPeerConnection(_stream, _pc) {
 // establishes socket connection
 function initSocketConnection() {
   console.log("Initializing socket.io...");
-  socket = io();
+  //socket = io();
 
-  socket.on("connect", () => {});
+  this.$socket.on("connect", () => {});
 
   //On connection server sends the client his ID and a list of all keys
-  socket.on("introduction", (_id, _clientNum, _ids, _iceServers) => {
+  window.socket.on("introduction", (_id, _clientNum, _ids, _iceServers) => {
     // keep local copy of ice servers:
     console.log("Received ICE server credentials from server.");
     iceServerList = _iceServers;
@@ -124,7 +123,7 @@ function initSocketConnection() {
   });
 
   // when a new user has entered the server
-  socket.on("newUserConnected", (clientCount, _id, _ids) => {
+  window.socket.on("newUserConnected", (clientCount, _id, _ids) => {
     console.log(clientCount + " clients connected");
     console.log(_ids);
     let alreadyHasUser = false;
@@ -141,7 +140,7 @@ function initSocketConnection() {
     }
   });
 
-  socket.on("userDisconnected", (clientCount, _id, _ids) => {
+  window.socket.on("userDisconnected", (clientCount, _id, _ids) => {
     // Update the data from the server
     console.log(_ids);
     if (_id != id) {
@@ -153,11 +152,11 @@ function initSocketConnection() {
   });
 
   // Update when one of the users moves in space
-  socket.on("userPositions", (_clientProps) => {
+  window.socket.on("userPositions", (_clientProps) => {
     glScene.updateClientPositions(_clientProps);
   });
 
-  socket.on("call-made", async (data) => {
+  window.socket.on("call-made", async (data) => {
     console.log("Receiving call from user " + data.socket);
 
     // set remote session description to incoming offer
@@ -172,7 +171,7 @@ function initSocketConnection() {
     );
 
     // send answer out to caller
-    socket.emit("make-answer", {
+    window.socket.emit("make-answer", {
       answer,
       to: data.socket,
     });
@@ -382,5 +381,6 @@ function removeClientVideoElementAndCanvas(_id) {
   }
 }
 
-exports.clients = clients;
-exports.id = id;
+export {
+  clients
+} 
