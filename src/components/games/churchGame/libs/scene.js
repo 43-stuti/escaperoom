@@ -35,7 +35,7 @@ class Scene {
       0.1,
       5000
     );
-    this.camera.position.set(0, 2, 6);
+    this.camera.position.set(0, 0, 6);
     this.scene.add(this.camera);
 
     
@@ -171,12 +171,12 @@ class Scene {
 
     //_body.userData.interactable = true;
     //_head.userData.interactable = true;
-    _head.position.set(0, -1, 0);
+    _head.position.set(0, 0, 0);
     //_body.position.set(0,.5,0);
 
     // https://threejs.org/docs/index.html#api/en/objects/Group
     this.playerGroup = new THREE.Group();
-    this.playerGroup.position.set(0, -1, 0);
+    this.playerGroup.position.set(0, 2.3, 0);
     this.playerGroup.add(_head);
     //this.playerGroup.add(_body);
 
