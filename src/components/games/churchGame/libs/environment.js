@@ -2,7 +2,7 @@
 import * as THREE from 'three'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
-//import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 
 
@@ -64,10 +64,10 @@ new MTLLoader( manager )
 
   } );
 
-  /*const loader = new GLTFLoader( manager )
+  const loader = new GLTFLoader( manager )
   .setPath('./assets/church/')
   .load ('scene.gltf', function ( object2 ){
-
+    console.log(loader);
       //object2.scene.scale.set(.5,.5,.5);
       scene.add(object2.scene);
         }, onProgress, onError);
@@ -80,7 +80,7 @@ new MTLLoader( manager )
 
 //
 
-*/
+
 }
 
 export {
