@@ -35,7 +35,7 @@ class Scene {
       0.1,
       5000
     );
-    this.camera.position.set(0, 3, 6);
+    this.camera.position.set(0, 2, 6);
     this.scene.add(this.camera);
 
     
