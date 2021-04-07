@@ -42,14 +42,14 @@ const manager = new THREE.LoadingManager();
 // manager.addHandler( /\.tga$/i, new TGALoader() );
 
 new MTLLoader( manager )
-  .setPath( '../assets/' )
+  .setPath( '/church/assets/' )
   .load( 'confessional+2.mtl', function ( materials ) {
 
     materials.preload();
 
     new OBJLoader( manager )
       .setMaterials( materials )
-      .setPath( '../assets/' )
+      .setPath( '/church/assets/' )
       .load( 'confessional+2.obj', function ( object ) {
 
         object.position.z = .8;

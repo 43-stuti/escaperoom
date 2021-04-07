@@ -10,13 +10,13 @@
  */
 import * as yorbControls from './yorbControls.js';
 import * as environment from './environment.js';
-import * as index from './index1.js';
 import * as THREE from 'three';
 
 class Scene {
-  constructor(_movementCallback) {
-    this.movementCallback = _movementCallback;
-
+  constructor(socket) {
+    console.log('HAHAHHA',socket)
+    //this.movementCallback = _movementCallback;
+    this.socket = socket;
     //THREE scene
     this.scene = new THREE.Scene();
     this.keyState = {};
@@ -145,7 +145,7 @@ class Scene {
     this.controls = new yorbControls.yorbControls(this.scene,this.camera, this.renderer);
 
     // Start the update loop
-    this.update();
+    //this.update();
   }
 
   //////////////////////////////////////////////////////////////////////
@@ -158,7 +158,7 @@ class Scene {
 
   //////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////
-  // index.clients 👫
+  // this.socket.clients 👫
 
   addSelf() {
     //let videoMaterial = makeVideoMaterial("local");
@@ -207,16 +207,16 @@ class Scene {
 
     // add group to scene
     this.scene.add(group);
-
-    index.clients[_id].group = group;
-    index.clients[_id].head = _head;
-    index.clients[_id].desiredPosition = new THREE.Vector3();
-    index.clients[_id].desiredRotation = new THREE.Quaternion();
-    index.clients[_id].movementAlpha = 0;
+    console.log('ADDED GROUP TO BODY')
+    this.socket.clients[_id].group = group;
+    this.socket.clients[_id].head = _head;
+    this.socket.clients[_id].desiredPosition = new THREE.Vector3();
+    this.socket.clients[_id].desiredRotation = new THREE.Quaternion();
+    this.socket.clients[_id].movementAlpha = 0;
   }
 
   removeClient(_id) {
-    //this.scene.remove(index.clients[_id].group);
+    //this.scene.remove(this.socket.clients[_id].group);
     console.log(_id);
   }
 
@@ -224,11 +224,13 @@ class Scene {
   updateClientPositions(_clientProps) {
     for (let _id in _clientProps) {
       // we'll update ourselves separately to avoid lag...
-      if (_id != 0) {
-        index.clients[_id].desiredPosition = new THREE.Vector3().fromArray(
+      if (_id != this.socket.id) {
+        //update store?
+        console.log(this.socket.clients,_id)
+        this.socket.clients[_id].desiredPosition = new THREE.Vector3().fromArray(
           _clientProps[_id].position
         );
-        index.clients[_id].desiredRotation = new THREE.Quaternion().fromArray(
+        this.socket.clients[_id].desiredRotation = new THREE.Quaternion().fromArray(
           _clientProps[_id].rotation
         );
       }
@@ -239,39 +241,42 @@ class Scene {
   interpolatePositions() {
     let snapDistance = 0.5;
     let snapAngle = 0.2; // radians
-    for (let _id in index.clients) {
-      index.clients[_id].group.position.lerp(index.clients[_id].desiredPosition, 0.2);
-      index.clients[_id].group.quaternion.slerp(index.clients[_id].desiredRotation, 0.2);
-      if (
-        index.clients[_id].group.position.distanceTo(index.clients[_id].desiredPosition) <
-        snapDistance
-      ) {
-        index.clients[_id].group.position.set(
-          index.clients[_id].desiredPosition.x,
-          index.clients[_id].desiredPosition.y,
-          index.clients[_id].desiredPosition.z
-        );
-      }
-      if (
-        index.clients[_id].group.quaternion.angleTo(index.clients[_id].desiredRotation) <
-        snapAngle
-      ) {
-        index.clients[_id].group.quaternion.set(
-          index.clients[_id].desiredRotation.x,
-          index.clients[_id].desiredRotation.y,
-          index.clients[_id].desiredRotation.z,
-          index.clients[_id].desiredRotation.w
-        );
-      }
+    for (let _id in this.socket.clients) {
+      if(this.socket.clients[_id] && this.socket.clients[_id].group) {
+        console.log('interpolatePositions',this.socket.clients,_id)
+          this.socket.clients[_id].group.position.lerp(this.socket.clients[_id].desiredPosition, 0.2);
+          this.socket.clients[_id].group.quaternion.slerp(this.socket.clients[_id].desiredRotation, 0.2);
+          if (
+            this.socket.clients[_id].group.position.distanceTo(this.socket.clients[_id].desiredPosition) <
+            snapDistance
+          ) {
+            this.socket.clients[_id].group.position.set(
+              this.socket.clients[_id].desiredPosition.x,
+              this.socket.clients[_id].desiredPosition.y,
+              this.socket.clients[_id].desiredPosition.z
+            );
+          }
+          if (
+            this.socket.clients[_id].group.quaternion.angleTo(this.socket.clients[_id].desiredRotation) <
+            snapAngle
+          ) {
+            this.socket.clients[_id].group.quaternion.set(
+              this.socket.clients[_id].desiredRotation.x,
+              this.socket.clients[_id].desiredRotation.y,
+              this.socket.clients[_id].desiredRotation.z,
+              this.socket.clients[_id].desiredRotation.w
+            );
+          }
+        }
     }
   }
 
   updateClientVolumes() {
-    for (let _id in index.clients) {
+    for (let _id in this.socket.clients) {
       let audioEl = document.getElementById(_id + "_audio");
       if (audioEl) {
         let distSquared = this.camera.position.distanceToSquared(
-          index.clients[_id].group.position
+          this.socket.clients[_id].group.position
         );
 
         if (distSquared > 500) {
@@ -408,7 +413,8 @@ class Scene {
 
     if (this.frameCount % 25 === 0) {
       this.updateClientVolumes();
-      this.movementCallback();
+      this.socket.socket.emit("move", this.getPlayerPosition());
+      //this.movementCallback();
     }
 
     this.interpolatePositions();

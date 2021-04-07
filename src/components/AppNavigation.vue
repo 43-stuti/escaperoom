@@ -90,6 +90,11 @@ export default {
           id: 2,
           text: 'CHURCH',
           page:'/Church'
+        },
+        {
+          id: 3,
+          text: 'DIARY',
+          page:'/Diary'
         }
       ],
       activeClass : 'font-weight-bold grey--text text--darken-3'

@@ -8,7 +8,8 @@
  </div>
 </template>
 <script>
-import * as scene from '../churchGame/libs/scene.js'
+import Scene from '../churchGame/libs/scene.js'
+import IndexSetup from '../churchGame/libs/index1.js'
 export default {
   name: 'church',
   data() {
@@ -18,7 +19,9 @@ export default {
         CoverText : 'text-h4 text-sm-h4 text-md-h2 text-lg-h1 text-xl-h1 font-weight-black justify-center',
         CoverTextLight : 'text-h4 text-sm-h4 text-md-h4 text-lg-h4 text-xl-h1 font-weight-regular text-left green--text text--darken-2 mt-12',
         SubText : 'mt-4 text-body-1 font-weight-medium justify-center'
-      }
+      },
+      glScene:null,
+      index:null
     }
   },
   computed: {
@@ -30,17 +33,38 @@ export default {
         default:
           return {height: '650px'};
       }
+    },
+    socket() {
+     return this.$store.state.socket;
+    }, 
+    clientCount() {
+     return this.$store.state.clientCount;
+    }
+  },
+  watch :{
+    clientCount(val){
+      console.log('WAAAH',val);
+      //add client
+      this.index.addClient(this.$store.state.lastAddedClient);
     }
   },
   methods: {
-    
-    
     render () {
-      console.log('scene',scene.me)
      // this.renderer.render(this.scene, this.camera);
     }
   },
   mounted() {
+    console.log('SCENEE',this.socket)
+    this.glScene = new Scene(this.socket);
+    this.index = new IndexSetup(this.socket,this.glScene);
+    console.log('BRRROOOOO',this.socket.clients)
+    for(let id in this.socket.clients) {
+      if(id != this.socket.id) {
+        console.log('MOUNTEDDD',id)
+        this.index.addClient(id);
+      }
+    }
+    this.glScene.update();
   }
 }
 </script>
