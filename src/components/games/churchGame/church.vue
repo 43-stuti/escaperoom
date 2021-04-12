@@ -5,9 +5,25 @@
     <audio loop id='track1' src='/church/assets/phone/InSceneSalCall.mp3' type='audio/mpeg' preload='auto' style='display: none'></audio>
     <audio loop id='track2' src='/church/assets/phone/InSceneGoomahCall.mp3' type='audio/mpeg' preload='auto' style='display: none'></audio>
     <audio loop id='track3' src='/church/assets/phone/InSceneWifeCall.mp3' type='audio/mpeg' preload='auto' style='display: none'></audio>
+
+    <div id="popUpBox">
+	<div id="wait">
+	<h1 >Please wait...</h1>
+	</div>
+<div id="box">
+	
+
+<div id="closeModal" ></div>
+</div>
+</div>
  </div>
+
+
+
+
 </template>
 <script>
+//import ModalControl from '../churchGame/libs/modalControl.js';
 import Scene from '../churchGame/libs/scene.js'
 import IndexSetup from '../churchGame/libs/index1.js'
 export default {
@@ -74,4 +90,23 @@ export default {
     height: 10px;
     width: 20px;
   }
+  #popUpBox {
+			width: 1000px;
+			overflow: hidden;
+			background: white;
+			box-shadow: 0 0 10px black;
+			border-radius: 10px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 9999;
+			padding: 10px;
+			text-align: center;
+			display: none;
+
+		}
+		#wait{
+			display:block;
+		}
 </style>

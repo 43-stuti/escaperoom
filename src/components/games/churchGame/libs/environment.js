@@ -12,7 +12,11 @@ function createEnvironment(scene) {
 loadModel(scene);
 
 const directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+//directionalLight.position.set()
 scene.add( directionalLight );
+
+const hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
+scene.add(hemiLight);
 
 }
 
@@ -64,12 +68,25 @@ new MTLLoader( manager )
 
   } );
 
-  const loader = new GLTFLoader( manager )
+   new GLTFLoader( manager )
   .setPath('./assets/church/')
   .load ('scene.gltf', function ( object2 ){
-    console.log(loader);
+    
       //object2.scene.scale.set(.5,.5,.5);
       scene.add(object2.scene);
+        }, onProgress, onError);
+
+   new GLTFLoader( manager )
+  .setPath('./assets/briefcase/')
+  .load ('scene.gltf', function ( object3 ){
+      object3.scene.scale.set(.1,.1,.1);
+
+      object3.scene.position.y = .5;
+      object3.scene.position.z = 14.8;
+      object3.scene.position.x = 4;
+      object3.scene.rotation.y = Math.PI/4
+      
+      scene.add(object3.scene);
         }, onProgress, onError);
         
 

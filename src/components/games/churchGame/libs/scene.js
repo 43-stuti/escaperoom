@@ -12,6 +12,9 @@ import * as yorbControls from './yorbControls.js';
 import * as environment from './environment.js';
 import * as THREE from 'three';
 
+import Alert from './modalControl.js';
+//import { render } from 'sass';
+
 class Scene {
   constructor(socket) {
     console.log('HAHAHHA',socket)
@@ -346,12 +349,18 @@ class Scene {
       let obj = intersects[i].object;
 
       // test our raycaster by logging the object the ray has intersected with to the console:
-       console.log(obj);
+       //console.log(obj);
 
       // first, let's check if we have marked the intersected object as interactable!
       // 'continue' means that the subsequent code won't run for this iteraction of the for loop
-      if (!obj.userData.interactable) continue;      
-      //Alert.render();
+      if (obj.name == "Team3_Sanchez_Briefcase_Team3_Sanchez_BriefcaseLeather_0")
+
+      {
+      console.log("briefcase works");
+      this.ModalControl = new Alert();
+      this.ModalControl.CustomAlert();
+    }
+      
       
       
 
@@ -383,7 +392,7 @@ class Scene {
       (event.clientX / this.renderer.domElement.clientWidth) * 2 - 1;
     this.mouse.y =
       -(event.clientY / this.renderer.domElement.clientHeight) * 2 + 1;
-    // console.log(this.mouse);
+     //console.log(this.mouse);
   }
 
   onMouseUp() {
@@ -391,7 +400,7 @@ class Scene {
     
     //console.log("click");
     this.checkRaycaster();
-  
+    console.log(this.mouse);
 
     
 
@@ -471,5 +480,4 @@ function makeVideoMaterial(_id) {
 }
 
 export default Scene;
-
-
+  
