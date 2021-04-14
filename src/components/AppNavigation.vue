@@ -89,10 +89,6 @@ export default {
           id: 3,
           text: 'DIARY',
           page:'/Diary'
-        }, {
-          id: 4,
-          text: 'CHURCH',
-          page:'/Church'
         }],
         2:[  {
           id: 0,
@@ -103,11 +99,6 @@ export default {
           id: 1,
           text: 'ABOUT',
           page:'/About'
-        },
-        {
-          id: 2,
-          text: 'CHURCH',
-          page:'/Church'
         }],
         3:[  {
           id: 0,
