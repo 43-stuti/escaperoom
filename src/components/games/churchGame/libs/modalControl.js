@@ -1,5 +1,5 @@
 
-//import Scene from './scene.js';
+//import sketch from './puzzle.js';
 
 //var Alert = new CustomAlert();
 class Alert{
@@ -11,13 +11,14 @@ class Alert{
       
       let popUpBox = document.getElementById('popUpBox');
       popUpBox.style.display = "block";
-
+       
+        
       //let puzzleBox = document.getElementById('box');
 
       
       
       //Close Modal
-      document.getElementById('closeModal').innerHTML = '<p>OK</p>';
+      //document.getElementById('closeModal').innerHTML = '<p>OK</p>';
         /*let closemodal = document.getElementById('closeModal')
         closemodal.onclick = this.ok();*/
 

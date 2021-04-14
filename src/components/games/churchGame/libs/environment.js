@@ -68,16 +68,41 @@ new MTLLoader( manager )
 
   } );
 
+  new MTLLoader( manager )
+  .setPath( '/church/assets/' )
+  .load( 'confessional+2.mtl', function ( materials ) {
+
+    materials.preload();
+
+    new OBJLoader( manager )
+      .setMaterials( materials )
+      .setPath( '/church/assets/' )
+      .load( 'confessional+2.obj', function ( object4 ) {
+
+        object4.position.z = -5;
+        object4.position.x = .7;
+        //object.position.z = -3;
+        object4.scale.set(.025,.03,.03);
+        object4.rotation.y = -Math.PI/2;
+        object4.userData.confessional = true;
+        
+        scene.add( object4 );
+
+      }, onProgress, onError );
+
+  } );
+
    new GLTFLoader( manager )
-  .setPath('./assets/church/')
+  .setPath('/church/assets/church/')
   .load ('scene.gltf', function ( object2 ){
     
       //object2.scene.scale.set(.5,.5,.5);
       scene.add(object2.scene);
+      console.log("church worked",object2);
         }, onProgress, onError);
 
    new GLTFLoader( manager )
-  .setPath('./assets/briefcase/')
+  .setPath('/church/assets/briefcase/')
   .load ('scene.gltf', function ( object3 ){
       object3.scene.scale.set(.1,.1,.1);
 
