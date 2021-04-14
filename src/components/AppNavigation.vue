@@ -75,8 +75,22 @@ export default {
     return {
       appTitle: "Pizza",
       drawer: false,
-      links: [
+      linkMapping: {
+      1:[  {
+          id: 0,
+          text: 'HOME',
+          page:'/'
+        },
         {
+          id: 1,
+          text: 'ABOUT',
+          page:'/About'
+        },{
+          id: 3,
+          text: 'DIARY',
+          page:'/Diary'
+        }],
+        2:[  {
           id: 0,
           text: 'HOME',
           page:'/'
@@ -90,19 +104,35 @@ export default {
           id: 2,
           text: 'CHURCH',
           page:'/Church'
+        }],
+        3:[  {
+          id: 0,
+          text: 'HOME',
+          page:'/'
+        },
+        {
+          id: 1,
+          text: 'ABOUT',
+          page:'/About'
         },
         {
           id: 3,
           text: 'DIARY',
           page:'/Diary'
-        }
-      ],
+        }]
+      },
       activeClass : 'font-weight-bold grey--text text--darken-3'
     };
   },
   computed: {
     currentPage() {
       return this.$route.name;
+    },
+    gameState() {
+     return this.$store.state.gameState;
+    },
+    links() {
+      return this.linkMapping[this.gameState]
     }
   }
 };

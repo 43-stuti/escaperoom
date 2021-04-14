@@ -3,12 +3,14 @@
         <v-content transition="scroll-y-transition">
             <router-view></router-view>
             <AppNavigation></AppNavigation>
+            <Chat id="chat"></Chat>
         </v-content>
     </v-app>
 </template>
 
 <script>
 import AppNavigation from './components/AppNavigation'
+import Chat from './components/chat/Chat.vue'
 import io from 'socket.io-client';
 export default {
     name: 'App',
@@ -22,7 +24,8 @@ export default {
         }
     },
     components : {
-        'AppNavigation' : AppNavigation
+        'AppNavigation' : AppNavigation,
+        'Chat':Chat
     },
     mounted() {
         //this.$store.dispatch('connect');
@@ -44,7 +47,6 @@ export default {
             // for each existing user, add them as a client and add tracks to their peer connection
             for (let i = 0; i < _ids.length; i++) {
                 if (_ids[i] != this.sockObj.id) {
-                    console.log('CROSS CHECK',_ids[i],this.sockObj.id)
                     this.sockObj.clients[_ids[i]] = {};
                     //addclient : dispatch to store
                     this.$store.commit('addclient',{
@@ -62,7 +64,6 @@ export default {
             let alreadyHasUser = false;
             for (let i = 0; i < Object.keys(this.sockObj.clients).length; i++) {
             if (Object.keys(this.sockObj.clients)[i] == _id) {
-                console.log('I A HERERERERE')
                 alreadyHasUser = true;
                 break;
                 }
@@ -88,9 +89,16 @@ export default {
                 //removeclient : dispatch to store
             }
         });
+
     }
 }
 </script>
 
 <style>
+    #chat {
+        position: absolute;
+        z-index:10;
+        margin-top:-47.5vh;
+        margin-left:83vw;
+    }
 </style>

@@ -11,7 +11,8 @@ export default new Vuex.Store({
       iceServerList:null,
     },
     clientCount:0,
-    lastAddedClient:null
+    lastAddedClient:null,
+    gameState:1
   },
   mutations: {
     connect(state,socketObj) {
@@ -22,10 +23,8 @@ export default new Vuex.Store({
       state.clientCount = 1;
     },
     addclient(state,socketObj) {
-      console.log('ADD CLIENT',socketObj,state.socket.clients)
       state.socket.clients[socketObj.id] = socketObj.socketData.clients[socketObj.id]
       state.clientCount = state.clientCount + 1;
-      console.log('client count',socketObj,state.clients)
       state.lastAddedClient = socketObj.id;
     }
   },

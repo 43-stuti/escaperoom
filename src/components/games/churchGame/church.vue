@@ -14,13 +14,9 @@
 	
 
 <div id="closeModal" ></div>
+  </div>
+  </div>
 </div>
-</div>
- </div>
-
-
-
-
 </template>
 <script>
 //import ModalControl from '../churchGame/libs/modalControl.js';
@@ -60,7 +56,6 @@ export default {
   watch :{
     clientCount(val){
       console.log('WAAAH',val);
-      //add client
       this.index.addClient(this.$store.state.lastAddedClient);
     }
   },
@@ -70,13 +65,10 @@ export default {
     }
   },
   mounted() {
-    console.log('SCENEE',this.socket)
     this.glScene = new Scene(this.socket);
     this.index = new IndexSetup(this.socket,this.glScene);
-    console.log('BRRROOOOO',this.socket.clients)
     for(let id in this.socket.clients) {
       if(id != this.socket.id) {
-        console.log('MOUNTEDDD',id)
         this.index.addClient(id);
       }
     }
