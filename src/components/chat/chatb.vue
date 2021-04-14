@@ -29,16 +29,12 @@ export default {
 </script>
 <style scoped>
     .container {
-        margin-bottom:20px;
+        margin-bottom:2px;
     }
     .bubbleC {
-        color: blanchedalmond;
+        color: rgb(42, 139, 23);;
     }
     .bubble {
         display: inline-block;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 5px;
-        padding-bottom: 5px;
     }
 </style>

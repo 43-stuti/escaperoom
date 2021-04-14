@@ -85,6 +85,14 @@ export default {
           id: 1,
           text: 'ABOUT',
           page:'/About'
+        }, {
+          id: 3,
+          text: 'DIARY',
+          page:'/Diary'
+        }, {
+          id: 2,
+          text: 'CHURCH',
+          page:'/Church'
         }],
         2:[  {
           id: 0,

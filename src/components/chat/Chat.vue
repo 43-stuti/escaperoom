@@ -1,5 +1,5 @@
 <template>
-  <div v-if="messages.length" class="container-fluid main">
+  <div class="container-fluid main">
       <div class="chatscreen">
            <div>
                 <div ref="messageView" class="chats">
@@ -161,7 +161,6 @@ export default {
         vertical-align: end;
     }
     .displayprompt {
-        margin-bottom: 10px;
         font-size: 14px;
         font-weight: 100;
     }
@@ -172,6 +171,7 @@ export default {
         background: transparent;
         border:0.1px solid;
         border-radius: '100px';
+        color: rgb(42, 139, 23);
         border-color: rgb(42, 139, 23);
     }
     .separator {

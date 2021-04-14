@@ -29,7 +29,7 @@ export default {
     },
     mounted() {
         //this.$store.dispatch('connect');
-        this.sockObj.socket = io('https://elderly-polyester-chard.glitch.me:3000',{
+        this.sockObj.socket = io('https://immense-citadel-10641.herokuapp.com',{
             "rejectUnauthorized" : false
         })
         this.sockObj.socket.on("introduction", (_id, _clientNum, _ids, _iceServers) => {
