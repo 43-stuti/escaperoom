@@ -85,10 +85,6 @@ export default {
           id: 1,
           text: 'ABOUT',
           page:'/About'
-        },{
-          id: 3,
-          text: 'DIARY',
-          page:'/Diary'
         }],
         2:[  {
           id: 0,
