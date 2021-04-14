@@ -12,10 +12,13 @@ import * as yorbControls from './yorbControls.js';
 import * as environment from './environment.js';
 import * as THREE from 'three';
 
+
 import Alert from './modalControl.js';
 //import { render } from 'sass';
 
 class Scene {
+  
+
   constructor(socket) {
     console.log('HAHAHHA',socket)
     //this.movementCallback = _movementCallback;
@@ -45,55 +48,64 @@ class Scene {
 
     // create an AudioListener and add it to the camera
     this.listener = new THREE.AudioListener();
-    this.playerGroup.add(this.listener);
+    this.camera.add(this.listener);
+    
 
-    let sphereGeometry = new THREE.SphereGeometry( 0.25, 0, 0 );
-        let sphereMaterial = new THREE.MeshPhongMaterial( { color: 0x8f34eb } );
-        let sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
-        sphere.position.set ( 0, 1, 2);
+        let sphereGeometry = new THREE.SphereGeometry( 0.25, 0, 0 );
+        let sphereMaterial = new THREE.MeshPhongMaterial( { transparent:true,opacity:0 } );
+  
+    
+        //sphere1
         
-        sphere.castShadow = true;
-        this.scene.add (sphere);
-    
-        let sphere2 = new THREE.Mesh( sphereGeometry, sphereMaterial );
-        sphere2.position.set ( -1.5, 1, -.9);
-        sphere2.rotation.x = Math.PI;
-        sphere2.rotation.y = Math.PI/2;
-        sphere2.castShadow = true;
-        this.scene.add (sphere2);
-
-    const audioElement1 = document.getElementById( 'track1' )
-    console.log('audioElement1',audioElement1);
-        audioElement1.play();
-        this.camera.add (this.audioElement1)
-
-        //audio play
-        const audioElement2 = document.getElementById( 'track2' )
-        audioElement2.play();
-    
+        this.sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
+        this.sphere.position.set ( 0, 1, -2);
+        this.sphere.castShadow = true;
+        this.scene.add (this.sphere);
+        //audio
+        this.audioElement1 = document.getElementById( 'track1' )
         //positional audio
-        const positionalAudio2 = new THREE.PositionalAudio( this.listener )
-        positionalAudio2.setMediaElementSource ( audioElement2 )
-        positionalAudio2.setRefDistance ( 1 );
-        positionalAudio2.setDirectionalCone (180, 230, 0.1,);
-    
-        //const helper2 = new PositionalAudioHelper (positionalAudio2, 2 )
-        //positionalAudio2.add (helper2)
-        sphere.add( positionalAudio2 )
-    
-        //audio play
-        const audioElement3 = document.getElementById( 'track3' )
-        audioElement3.play();
-    
+        this.positionalAudio1 = new THREE.PositionalAudio( this.listener )
+        this.positionalAudio1.setMediaElementSource ( this.audioElement1 )
+        this.positionalAudio1.setRefDistance ( 1 );
+        this.positionalAudio1.setDirectionalCone (110, 180, 0.1,);
+        this.sphere.add( this.positionalAudio );
+
+        //sphere2
+        
+        this.sphere2 = new THREE.Mesh( sphereGeometry, sphereMaterial );
+        this.sphere2.position.set ( 2, 1, -2);
+        this.sphere2.castShadow = true;
+        
+        //audio 
+        
+        this.audioElement2 = document.getElementById( 'track2' );
         //positional audio
-        const positionalAudio3 = new THREE.PositionalAudio( this.listener )
-        positionalAudio3.setMediaElementSource ( audioElement3 )
-        positionalAudio3.setRefDistance ( 1 );
-        positionalAudio3.setDirectionalCone (40, 50, 0.1,);
-    
-        //const helper3 = new PositionalAudioHelper (positionalAudio3, 2 )
-        //positionalAudio3.add (helper3)
-        sphere2.add( positionalAudio3 )
+        this.positionalAudio2 = new THREE.PositionalAudio( this.listener );
+        this.positionalAudio2.setMediaElementSource ( this.audioElement2 );
+        this.positionalAudio2.setRefDistance ( .1);
+        this.positionalAudio2.setDirectionalCone (110, 180, .1);
+        this.sphere2.add( this.positionalAudio2 );
+        this.scene.add (this.sphere2);
+        //sphere 3
+        
+        this.sphere3 = new THREE.Mesh( sphereGeometry, sphereMaterial );
+        this.sphere3.position.set ( -2, 1, -2);
+        //this.sphere3.rotation.x = Math.PI;
+        this.sphere3.rotation.y = Math.PI/2;
+        this.sphere3.castShadow = true;
+        
+        //audio play
+        this.audioElement3 = document.getElementById( 'track3' );
+        //positional audio
+        this.positionalAudio3 = new THREE.PositionalAudio( this.listener );
+        this.positionalAudio3.setMediaElementSource ( this.audioElement3 );
+        this.positionalAudio3.setRefDistance ( .2 );
+        this.positionalAudio3.setDirectionalCone (40, 50, .1);
+        
+        this.sphere3.add( this.positionalAudio3 );
+        this.scene.add (this.sphere3);
+
+        
 
     //THREE WebGL renderer
     this.renderer = new THREE.WebGLRenderer({
@@ -349,7 +361,7 @@ class Scene {
       let obj = intersects[i].object;
 
       // test our raycaster by logging the object the ray has intersected with to the console:
-       //console.log(obj);
+       console.log(obj);
 
       // first, let's check if we have marked the intersected object as interactable!
       // 'continue' means that the subsequent code won't run for this iteraction of the for loop
@@ -360,7 +372,19 @@ class Scene {
       this.ModalControl = new Alert();
       this.ModalControl.CustomAlert();
     }
+
+    
+    if (obj.name == "Mesh2 confessional_booth_2_1 Model")
+
+    {
       
+    this.audioElement1.play();
+    this.audioElement2.play();
+    this.audioElement3.play();
+      
+    
+    
+  }
       
       
 

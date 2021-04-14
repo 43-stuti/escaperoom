@@ -2,13 +2,14 @@
  <div>
     <div id="canvas-container"
     > </div>
-    <audio loop id='track1' src='/church/assets/phone/InSceneSalCall.mp3' type='audio/mpeg' preload='auto' style='display: none'></audio>
-    <audio loop id='track2' src='/church/assets/phone/InSceneGoomahCall.mp3' type='audio/mpeg' preload='auto' style='display: none'></audio>
-    <audio loop id='track3' src='/church/assets/phone/InSceneWifeCall.mp3' type='audio/mpeg' preload='auto' style='display: none'></audio>
-
+    <audio loop id='track1' src='/church/assets/confession/Father.mp3' type='audio/mpeg' preload='auto' style='display: none'></audio>
+    <audio loop id='track2' src='/church/assets/confession/Sal.mp3' type='audio/mpeg' preload='auto' style='display: none'></audio>
+    <audio loop id='track3' src='/church/assets/confession/Big-Tony.mp3' type='audio/mpeg' preload='auto' style='display: none'></audio>
+    
     <div id="popUpBox">
+      <iframe src="https://editor.p5js.org/zsk236/embed/FV0X25LzC" width=800px height=400px></iframe>
 	<div id="wait">
-	<h1 >Please wait...</h1>
+	
 	</div>
 <div id="box">
 	
@@ -19,7 +20,7 @@
 </div>
 </template>
 <script>
-//import ModalControl from '../churchGame/libs/modalControl.js';
+
 import Scene from '../churchGame/libs/scene.js'
 import IndexSetup from '../churchGame/libs/index1.js'
 export default {
