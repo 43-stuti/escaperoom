@@ -54,9 +54,9 @@ export default {
         switch (this.$vuetify.breakpoint.name) {
           case 'xs':
           case 'sm':
-            return {height: '550px'};
+            return {height: '100vh'};
           default:
-            return {height: '650px'};
+            return {height: '100vh'};
         }
       }
     },
@@ -72,7 +72,9 @@ export default {
     height: 100%;
     width: 100%;
     z-index: -1;
-    background-color:  rgba(70, 156, 0, 0.7);
+    background-image:  url('/pizza.jpg');
+    background-size: cover;
+    color: rgb(255, 255, 255);
   }
   .Flowers {
        z-index: 0;
