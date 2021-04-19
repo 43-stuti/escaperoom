@@ -153,6 +153,7 @@ export default {
     name:'table',
     data() {
         return {
+            puzzleState:0,
             currentPage:1,
             lemonState:0,
             drawerState:0,
@@ -172,7 +173,6 @@ export default {
     },
     methods: {
         onClick: function(event) {
-            console.log('CLICK WHAT',event.currentTarget,this.lighterState);
             if(event.currentTarget.id == 'closeD1') {
                 let obj2 = document.getElementById("closeD1");
                 obj2.setAttribute("opacity",0)
@@ -206,11 +206,21 @@ export default {
 
                         stainedPageL.setAttribute("opacity",1);
                         this.pageState[this.currentPage]['L'] = 1;
+                        this.handleUpdate(1,{
+                            id:this.currentPage,
+                            pageSide:'L',
+                            state: this.pageState[this.currentPage]['L']
+                        })
                     } else {
                         if(event.clientX < boundingR.right &&  event.clientX > boundingR.left 
                         && event.clientY > boundingR.top &&  event.clientY < boundingR.bottom && !this.pageState[this.currentPage]['R']) {
                             stainedPageR.setAttribute("opacity",1);
                             this.pageState[this.currentPage]['R'] = 1;
+                            this.handleUpdate(1,{
+                                id:this.currentPage,
+                                pageSide:'R',
+                                state: this.pageState[this.currentPage]['R']
+                            })
                         }
                     }
                     this.lemonState = 2;
@@ -247,6 +257,16 @@ export default {
                         stainedPageL.setAttribute("opacity",0);
                         textPageL.setAttribute("opacity",1);
                         this.pageState[this.currentPage]['L'] = 2;
+                        this.handleUpdate(1,{
+                            id:this.currentPage,
+                            pageSide:'L',
+                            state: this.pageState[this.currentPage]['L']
+                        })
+                        if(!this.puzzleState) {
+                            this.puzzleState = 1;
+                            this.handleUpdate(2,3);
+                        }
+                        //update page state to socket
                     } else {
                         if(event.clientX < boundingR.right &&  event.clientX > boundingR.left 
                         && event.clientY > boundingR.top &&  event.clientY < boundingR.bottom && this.pageState[this.currentPage]['R'] == 1) {
@@ -255,6 +275,15 @@ export default {
                             stainedPageR.setAttribute("opacity",0);
                             textPageR.setAttribute("opacity",1);
                             this.pageState[this.currentPage]['R'] = 2;
+                            this.handleUpdate(1,{
+                                id:this.currentPage,
+                                pageSide:'R',
+                                state: this.pageState[this.currentPage]['R']
+                            })
+                            if(!this.puzzleState) {
+                                this.puzzleState = 1;
+                                this.handleUpdate(2,3);
+                            }
                         }
                     }
                     this.lighterState = 2;
@@ -362,8 +391,16 @@ export default {
                     }
 
                 } 
+        },
+        handleUpdate(event,data) {
+            if(event == 1) {
+                console.log('UPDATING')
+                this.socket.socket.emit('diary-puzzle',data);
+            }
+            if(event == 2) {
+                this.socket.socket.emit('state',data);
+            }
         }
-        
     },
     computed: {
         update() {
@@ -372,10 +409,25 @@ export default {
             } else {
                 return false;
             }
+        },
+        socket() {
+            return this.$store.state.socket;
         }
     },
     mounted() {
         document.addEventListener('mousemove', this.onMouseMove);
+        this.socket.socket.on('diary-update',(data) => {
+            console.log('PAGE UPDATE',data)
+            if(data.id && ['L','R'].indexOf(data.pageSide) > -1) {
+                if(!this.pageState[data.id]) {
+                    this.pageState[data.id] = {
+                        'L':0,
+                        'R':0
+                    }
+                }
+                this.pageState[data.id][data.pageSide] = data.state;
+            }
+        })
     }
 }
 </script>

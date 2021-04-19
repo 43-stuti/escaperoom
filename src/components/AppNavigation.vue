@@ -85,14 +85,6 @@ export default {
           id: 1,
           text: 'ABOUT',
           page:'/About'
-        }, {
-          id: 3,
-          text: 'DIARY',
-          page:'/Diary'
-        }, {
-          id: 2,
-          text: 'CHURCH',
-          page:'/Church'
         }],
         2:[  {
           id: 0,
@@ -103,8 +95,12 @@ export default {
           id: 1,
           text: 'ABOUT',
           page:'/About'
+        },{
+          id: 3,
+          text: 'DIARY',
+          page:'/Diary'
         }],
-        3:[  {
+        3:[{
           id: 0,
           text: 'HOME',
           page:'/'
@@ -118,6 +114,10 @@ export default {
           id: 3,
           text: 'DIARY',
           page:'/Diary'
+        }, {
+          id: 2,
+          text: 'CHURCH',
+          page:'/Church'
         }]
       },
       activeClass : 'font-weight-bold grey--text text--darken-3'

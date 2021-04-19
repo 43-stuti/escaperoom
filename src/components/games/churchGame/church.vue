@@ -55,8 +55,7 @@ export default {
     }
   },
   watch :{
-    clientCount(val){
-      console.log('WAAAH',val);
+    clientCount(){
       this.index.addClient(this.$store.state.lastAddedClient);
     }
   },

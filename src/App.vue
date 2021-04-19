@@ -36,6 +36,9 @@ export default {
         this.sockObj.socket = io('https://immense-citadel-10641.herokuapp.com',{
             "rejectUnauthorized" : false
         })
+        this.sockObj.socket.on('gameStateUpdate',(data) => {
+            this.$store.commit('gameStateUpdate',data)
+        })
         this.sockObj.socket.on("introduction", (_id, _clientNum, _ids, _iceServers) => {
             // keep local copy of ice servers:
             console.log("Received ICE server credentials from server.");
