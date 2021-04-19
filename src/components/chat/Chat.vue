@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid main">
+  <v-card class=" main">
       <div class="chatscreen">
            <div>
                 <div ref="messageView" class="chats">
@@ -19,7 +19,7 @@
                 </form>
             </div>
         </div>
-  </div>
+  </v-card>
 </template>
 
 <script>
@@ -140,7 +140,7 @@ export default {
     }
     .separatorChat {
         height: 0.9px;
-        width: 95%;
+        width: 100%;
         background-color: rgb(42, 139, 23);
         margin-bottom: 15px;
     }

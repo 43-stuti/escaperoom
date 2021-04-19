@@ -3,7 +3,10 @@
         <v-content transition="scroll-y-transition">
             <router-view></router-view>
             <AppNavigation></AppNavigation>
-            <Chat id="chat"></Chat>
+            <v-card class="chatcard"
+            >
+                <Chat></Chat>
+            </v-card>
         </v-content>
     </v-app>
 </template>
@@ -19,7 +22,8 @@ export default {
             sockObj:{
                 socket:null,
                 clients:{},
-                id:null
+                id:null,
+                dialog:true
             }
         }
     },
@@ -31,6 +35,9 @@ export default {
         //this.$store.dispatch('connect');
         this.sockObj.socket = io('https://immense-citadel-10641.herokuapp.com',{
             "rejectUnauthorized" : false
+        })
+        this.sockObj.socket.on('gameStateUpdate',(data) => {
+            this.$store.commit('gameStateUpdate',data)
         })
         this.sockObj.socket.on("introduction", (_id, _clientNum, _ids, _iceServers) => {
             // keep local copy of ice servers:
@@ -95,10 +102,15 @@ export default {
 </script>
 
 <style>
+   .chatcard {
+       position: absolute;
+       margin-right: 1vw !important;
+       margin-top:-48vh;
+       margin-left:82vw;
+   }
     #chat {
-        position: absolute;
+        height: 100%;
+        width: 100%;
         z-index:10;
-        margin-top:-47.5vh;
-        margin-left:83vw;
     }
 </style>

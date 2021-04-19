@@ -6,16 +6,16 @@
     <div @click="onClick($event)" id='lighterCursor' v-if="lighterState">
         <img :src="cursorUrl.lighter"/>
     </div>
-    <svg width="1500" height="650" viewBox="0 -120 1010 1175"  fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <svg width="990" height="550" viewBox="-400 -200 1010 1500"  fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g clip-path="url(#clip0)">
 <rect width="1010" height="1175" fill="white"/>
 <rect id="book" @click="onClick($event)" x="-27" width="1000" height="1000" fill="url(#pattern0)"/>
 <rect id="lighter" @click="onClick($event)" x="450" y="866" width="206" height="114" fill="url(#pattern1)"/>
 <rect id="drawer" @mousedown="onmousedown($event)"  @mouseup="onmouseup($event)" y="825" width="1000" height="175" fill="url(#pattern2)"/>
 <rect id="lemon" @click="onClick($event)" x="782" width="117" height="111" fill="url(#pattern3)"/>
-<rect x="870" y="397" width="103" height="144" fill="url(#pattern4)"/>
-<rect x="22" y="397" width="103" height="144" fill="url(#pattern5)"/>
-<path d="M803.908 439.941C807.01 406.156 810.999 357.06 814.2 323.811C815.115 315.776 816.94 309.484 817.814 306.57C818.271 305.044 818.494 305.323 818.822 305.677C819.685 306.604 821.647 304.019 822.505 305.06C824.732 307.762 826.698 303.08 828.946 305.56C830.648 307.437 832.18 306.713 834.021 306.856C834.721 306.91 834.57 314.646 833.631 325.319C831.324 351.561 828.684 382.868 826.509 409.399C822.37 459.858 817.811 509.786 813.879 560.461L807.391 644.09C807.092 647.947 805.344 645.411 805.249 645.034C804.566 642.318 804.058 637.785 803.383 635.036C802.561 631.686 801.522 631.2 800.598 629.06C799.549 626.63 798.156 627.792 796.872 628.285C795.757 628.713 794.646 628.994 793.373 631.622C791.539 635.408 789.75 638.684 787.913 642.579C787.434 643.594 785.727 646.213 786.524 635.601C788.117 614.374 789.66 595.188 791.566 573.885C794.005 546.636 796.503 519.997 799.028 493.135C800.68 475.551 802.282 457.649 803.908 439.941Z" fill="white"/>
+<rect id="next" @click="onClick($event)" x="870" y="397" width="103" height="144" fill="url(#pattern4)"/>
+<rect id="prev" @click="onClick($event)" x="22" y="397" width="103" height="144" fill="url(#pattern5)"/>
+<path d="M803.908 439.941C807.01 406.156 810.999 357.06 814.2 323.811C815.115 315.776 816.94 309.484 817.814 306.57C818.271 305.044 818.494 305.323 818.822 305.677C819.685 306.604 821.647 304.019 822.505 305.06C824.732 307.762 826.698 303.08 828.946 305.56C830.648 307.437 832.18 306.713 834.021 306.856C834.721 306.91 834.57 314.646 833.631 325.319C831.324 351.561 828.684 382.868 826.509 409.399C822.37 459.858 817.811 509.786 813.879 560.461L807.391 644.09C807.092 647.947 805.344 645.411 805.249 645.034C804.566 642.318 804.058 637.785 803.383 635.036C802.561 631.686 801.522 631.2 800.598 629.06C799.549 626.63 798.156 627.792 796.872 628.285C795.757 628.713 794.646 628.994 793.373 631.622C791.539 635.408 789.75 638.684 787.913 642.579C787.434 643.594 785.727 646.213 786.524 635.601C788.117 614.374 789.66 595.188 791.566 573.885C794.005 546.636 796.503 519.997 799.028 493.135C800.68 475.551 802.282 457.649 803.908 439.941Z" fill="black"/>
 <rect id="page1L" opacity=0 x="104" y="299" width="389" height="379" fill="url(#pattern6)"/>
 <rect id="page1R" opacity=0 x="491" y="299" width="344" height="366" fill="url(#pattern7)"/>
 <rect id="page2L" opacity=0 x="513" y="280" width="315" height="366" fill="url(#pattern8)"/>
@@ -36,8 +36,8 @@
 <rect id="page9R" opacity=0 x="513" y="280" width="315" height="366" fill="url(#pattern23)"/>
 <rect id="page10L" opacity=0 x="94" y="271" width="441" height="366" fill="url(#pattern24)"/>
 <path id="page10R" opacity=0 d="M515.064 426.427C523.825 392.817 528.265 343.748 539.261 310.735C544.169 302.818 565.72 297.102 576.151 294.467C581.509 293.113 585.362 293.459 590.856 293.952L591.179 293.981C606.067 295.317 634.274 293.496 649.234 294.947C688.052 298.712 713.791 294.723 752.676 298.268C782.118 300.952 805.7 300.869 835.269 301.819C846.505 302.18 853.427 310.119 851.32 320.755C846.14 346.906 841.777 378.153 839.049 404.661C833.861 455.075 821.312 504.756 819.683 555.483L816.995 639.199C816.871 643.06 785.909 639.675 783.942 639.244C769.754 636.136 756.175 631.224 742.086 628.085C724.92 624.261 707.736 623.305 690.401 620.688C670.72 617.717 649.881 618.314 629.979 618.264C612.692 618.222 595.297 618.029 578.146 620.194C553.434 623.314 528.812 625.924 504.19 629.155C497.772 629.998 473.676 631.964 473.589 621.33C473.415 600.057 474.901 580.875 479.633 559.661C485.685 532.525 493.429 506.046 501.325 479.347C506.492 461.871 510.471 444.043 515.064 426.427Z" fill="white"/>
-<path id="blankL" opacity=0 d="M510.607 434.358C517.66 400.484 520.29 351.298 529.412 317.949C533.684 309.879 553.302 303.474 562.801 300.505C567.681 298.98 571.228 299.202 576.286 299.519L576.584 299.538C590.292 300.395 616.135 297.67 629.912 298.64C665.662 301.157 689.175 296.345 724.979 298.64C752.089 300.378 773.737 299.538 800.912 299.538C811.239 299.538 817.827 307.251 816.207 317.949C812.221 344.253 809.137 375.624 807.414 402.206C804.137 452.76 794.081 502.819 794.081 553.572V637.331C794.081 641.194 765.555 638.804 763.736 638.436C750.619 635.785 738.007 631.311 724.979 628.626C709.107 625.355 693.302 624.952 677.31 622.892C659.153 620.554 640.039 621.819 621.766 622.409C605.894 622.921 589.917 623.287 574.235 626.001C551.639 629.912 529.111 633.311 506.6 637.331C500.733 638.379 478.669 641.118 478.275 630.492C477.488 609.235 478.287 590.015 482.006 568.66C486.762 541.344 493.092 514.631 499.554 487.692C503.783 470.059 506.911 452.113 510.607 434.358Z" fill="white"/>
-<path id="blankR" opacity=0 d="M491.325 400.217C495.488 370.433 501.617 340.084 515.911 313.46C506.737 310.548 490.635 307.15 481.531 303.974C452.602 293.883 422.317 288.011 391.743 286.443C361.393 284.886 330.243 287.72 299.946 290.476L298.082 290.646C285.449 291.794 266.244 298.611 254.081 295.749C245.789 293.798 236.65 320.847 234.388 326.339C230.258 336.369 224.887 346.39 218.838 355.368C207.187 372.662 199.532 392.301 188.038 409.733C180.501 421.164 175.846 434.119 169.486 446.176C162.869 458.722 155.282 470.763 149.133 483.551C137.267 508.228 125.982 533.544 116.022 559.019C106.826 582.539 93.601 604.6 86.4526 628.905C86.1021 630.096 82.5053 636.634 84.7115 634.428C86.4267 632.713 87.9372 630.893 89.5446 629.085C98.696 618.79 114.127 608.75 126.859 603.628C156.57 591.676 185.075 587.958 217.217 587.958C278.805 587.958 344.249 592.942 402.617 613.895C411.355 617.032 418.826 622.519 427.203 626.533C429.255 627.516 444.95 640.733 446.086 639.712C449.747 636.417 449.542 626.298 450.258 622C452.028 611.382 454.336 600.824 457.133 590.42C466.733 554.696 465.745 516.687 472.503 480.489C477.57 453.343 487.469 427.8 491.325 400.217Z" fill="white"/>
+<path id="blankR" opacity=0 d="M510.607 434.358C517.66 400.484 520.29 351.298 529.412 317.949C533.684 309.879 553.302 303.474 562.801 300.505C567.681 298.98 571.228 299.202 576.286 299.519L576.584 299.538C590.292 300.395 616.135 297.67 629.912 298.64C665.662 301.157 689.175 296.345 724.979 298.64C752.089 300.378 773.737 299.538 800.912 299.538C811.239 299.538 817.827 307.251 816.207 317.949C812.221 344.253 809.137 375.624 807.414 402.206C804.137 452.76 794.081 502.819 794.081 553.572V637.331C794.081 641.194 765.555 638.804 763.736 638.436C750.619 635.785 738.007 631.311 724.979 628.626C709.107 625.355 693.302 624.952 677.31 622.892C659.153 620.554 640.039 621.819 621.766 622.409C605.894 622.921 589.917 623.287 574.235 626.001C551.639 629.912 529.111 633.311 506.6 637.331C500.733 638.379 478.669 641.118 478.275 630.492C477.488 609.235 478.287 590.015 482.006 568.66C486.762 541.344 493.092 514.631 499.554 487.692C503.783 470.059 506.911 452.113 510.607 434.358Z" fill="white"/>
+<path id="blankL" opacity=0 d="M491.325 400.217C495.488 370.433 501.617 340.084 515.911 313.46C506.737 310.548 490.635 307.15 481.531 303.974C452.602 293.883 422.317 288.011 391.743 286.443C361.393 284.886 330.243 287.72 299.946 290.476L298.082 290.646C285.449 291.794 266.244 298.611 254.081 295.749C245.789 293.798 236.65 320.847 234.388 326.339C230.258 336.369 224.887 346.39 218.838 355.368C207.187 372.662 199.532 392.301 188.038 409.733C180.501 421.164 175.846 434.119 169.486 446.176C162.869 458.722 155.282 470.763 149.133 483.551C137.267 508.228 125.982 533.544 116.022 559.019C106.826 582.539 93.601 604.6 86.4526 628.905C86.1021 630.096 82.5053 636.634 84.7115 634.428C86.4267 632.713 87.9372 630.893 89.5446 629.085C98.696 618.79 114.127 608.75 126.859 603.628C156.57 591.676 185.075 587.958 217.217 587.958C278.805 587.958 344.249 592.942 402.617 613.895C411.355 617.032 418.826 622.519 427.203 626.533C429.255 627.516 444.95 640.733 446.086 639.712C449.747 636.417 449.542 626.298 450.258 622C452.028 611.382 454.336 600.824 457.133 590.42C466.733 554.696 465.745 516.687 472.503 480.489C477.57 453.343 487.469 427.8 491.325 400.217Z" fill="white"/>
 <rect  @click="onClick($event)" id="yellowL" x="110" y="293" width="408" height="366" opacity=0 fill="url(#pattern25)"/>
 <rect  @click="onClick($event)" id="yellowR" x="490" y="292" width="346" height="366" opacity=0 fill="url(#pattern26)"/>
 </g>
@@ -153,22 +153,26 @@ export default {
     name:'table',
     data() {
         return {
-            currentPage:0,
+            puzzleState:0,
+            currentPage:1,
             lemonState:0,
             drawerState:0,
             lighterState:0,
             customCursor : null,
+            activePage:0,
             cursorUrl: {
                 'lemon':'/diary/lemon.png',
                 'lighter':'/diary/lighter.png'
-            }
+            },
+            pageState : {
+            },
+            mouseY:null
         }
     },
     props:{
     },
     methods: {
         onClick: function(event) {
-            console.log('click',event.currentTarget.id);
             if(event.currentTarget.id == 'closeD1') {
                 let obj2 = document.getElementById("closeD1");
                 obj2.setAttribute("opacity",0)
@@ -188,9 +192,43 @@ export default {
             if(event.currentTarget.id == 'lemonCursor') {
                 if(this.lemonState == 1) {
                     let stainedPageL = document.getElementById('yellowL');
-                    stainedPageL.setAttribute("opacity",1)
+                    var boundingL = stainedPageL.getBoundingClientRect();
+                    let stainedPageR = document.getElementById('yellowR');
+                    var boundingR = stainedPageR.getBoundingClientRect();
+                    if(!this.pageState[this.currentPage]) {
+                        this.pageState[this.currentPage] = {
+                            'L':0,
+                            'R':0
+                        }
+                    }
+                    if(event.clientX < boundingL.right &&  event.clientX > boundingL.left 
+                        && event.clientY > boundingL.top &&  event.clientY < boundingL.bottom && !this.pageState[this.currentPage]['L']) {
+
+                        stainedPageL.setAttribute("opacity",1);
+                        this.pageState[this.currentPage]['L'] = 1;
+                        this.handleUpdate(1,{
+                            id:this.currentPage,
+                            pageSide:'L',
+                            state: this.pageState[this.currentPage]['L']
+                        })
+                    } else {
+                        if(event.clientX < boundingR.right &&  event.clientX > boundingR.left 
+                        && event.clientY > boundingR.top &&  event.clientY < boundingR.bottom && !this.pageState[this.currentPage]['R']) {
+                            stainedPageR.setAttribute("opacity",1);
+                            this.pageState[this.currentPage]['R'] = 1;
+                            this.handleUpdate(1,{
+                                id:this.currentPage,
+                                pageSide:'R',
+                                state: this.pageState[this.currentPage]['R']
+                            })
+                        }
+                    }
+                    this.lemonState = 2;
+                } else {
+                    if(this.lemonState == 2) {
+                        this.lemonState = 1;
+                    }
                 }
-                this.lemonState = 2;
             }
             if(event.currentTarget.id == 'lighter') {
                 if(this.lighterState == 0) {
@@ -203,15 +241,125 @@ export default {
             if(event.currentTarget.id == 'lighterCursor') {
                 if(this.lighterState == 1) {
                     let stainedPageL = document.getElementById('yellowL');
-                    stainedPageL.setAttribute("opacity",0);
-                    let pageL = document.getElementById('page1L');
-                    pageL.setAttribute("opacity",1)
+                    let boundingL = stainedPageL.getBoundingClientRect();
+                    let stainedPageR = document.getElementById('yellowR');
+                    let boundingR = stainedPageR.getBoundingClientRect();
+                    if(!this.pageState[this.currentPage]) {
+                        this.pageState[this.currentPage] = {
+                            'L':0,
+                            'R':0
+                        }
+                    }
+                    if(event.clientX < boundingL.right &&  event.clientX > boundingL.left 
+                        && event.clientY > boundingL.top &&  event.clientY < boundingL.bottom && this.pageState[this.currentPage]['L'] == 1) {
+                        let pID = 'page' + this.currentPage.toString() + 'L';
+                        let textPageL = document.getElementById(pID);
+                        stainedPageL.setAttribute("opacity",0);
+                        textPageL.setAttribute("opacity",1);
+                        this.pageState[this.currentPage]['L'] = 2;
+                        this.handleUpdate(1,{
+                            id:this.currentPage,
+                            pageSide:'L',
+                            state: this.pageState[this.currentPage]['L']
+                        })
+                        if(!this.puzzleState) {
+                            this.puzzleState = 1;
+                            this.handleUpdate(2,3);
+                        }
+                        //update page state to socket
+                    } else {
+                        if(event.clientX < boundingR.right &&  event.clientX > boundingR.left 
+                        && event.clientY > boundingR.top &&  event.clientY < boundingR.bottom && this.pageState[this.currentPage]['R'] == 1) {
+                            let pID = 'page' + this.currentPage.toString() + 'R';
+                            let textPageR = document.getElementById(pID);
+                            stainedPageR.setAttribute("opacity",0);
+                            textPageR.setAttribute("opacity",1);
+                            this.pageState[this.currentPage]['R'] = 2;
+                            this.handleUpdate(1,{
+                                id:this.currentPage,
+                                pageSide:'R',
+                                state: this.pageState[this.currentPage]['R']
+                            })
+                            if(!this.puzzleState) {
+                                this.puzzleState = 1;
+                                this.handleUpdate(2,3);
+                            }
+                        }
+                    }
+                    this.lighterState = 2;
+                } else {
+                    if(this.lighterState == 2) {
+                        this.lighterState = 1;
+                    }
                 }
-                this.lighterState = 2;
+            }
+            if(event.currentTarget.id == 'next' || event.currentTarget.id == 'prev') {
+                let newPage;
+                let check;
+                if(event.currentTarget.id == 'next') {
+                    newPage = this.currentPage + 1;
+                    check = newPage <= 10 ? true : false;
+                } else {
+                    newPage = this.currentPage - 1;
+                    check = newPage >= 1 ? true : false;
+                }
+                if(check) {
+                    //remove the last active content
+                    let pages = ['L','R'];
+                    let statusPageMapping = {
+                        0:'blank',
+                        1:'yellow',
+                        2:'page',
+                    }
+                    for(let i=0;i<pages.length;i++) {
+                        if(!this.pageState[this.currentPage]) {
+                            //load blank pages
+                            console.log('DO NADA!!');
+                        } else {
+                            let pID;
+                            let pageState = this.pageState[this.currentPage][pages[i]];
+                            if(pageState == 2) {
+                                pID = 'page' + this.currentPage.toString() + pages[i];
+                            } else {
+                                pID = statusPageMapping[pageState] + pages[i];
+                            }
+                            let elem = document.getElementById(pID);
+                            elem.setAttribute("opacity",0);
+                        }
+                    }
+                    //remove the new page content
+                    for(let i=0;i<pages.length;i++) {
+                        if(!this.pageState[newPage]) {
+                            //load blank pages
+                            this.pageState[newPage] = {
+                                'L':0,
+                                'R':0
+                            }
+                        } 
+                        let pID;
+                        let pageState = this.pageState[newPage][pages[i]];
+                        if(pageState == 2) {
+                            pID = 'page' + newPage.toString() + pages[i];
+                        } else {
+                            pID = statusPageMapping[pageState] + pages[i];
+                        }
+                        let elem = document.getElementById(pID);
+                        let finalOpacity = 1;
+                        if(pageState == 0) {
+                            finalOpacity = 0
+                        }
+                        setTimeout(() => {
+                            elem.setAttribute("opacity",0.95);
+                        },50);
+                        setTimeout(() => {
+                            elem.setAttribute("opacity",finalOpacity);
+                        },100);
+                    }
+                    this.currentPage = newPage;
+                }
             }
         },
         onmousedown: function(event) {
-            console.log('event.currentTarget.id',event.currentTarget.id)
             if(event.currentTarget.id == 'drawer') {
                 if(this.drawerState == 0) {
                     this.drawerState = 1;
@@ -219,7 +367,6 @@ export default {
             }
         },
         onmouseup: function(event) {
-            console.log('event.currentTarget.id',event.currentTarget.id)
             if(event.currentTarget.id == 'drawer') {
                 this.drawerState = 0;
             }
@@ -231,11 +378,10 @@ export default {
                         obj.style.left = event.pageX + 'px';
                         obj.style.top = event.pageY + 'px';
                     }
-
                 } 
-                if(this.drawerState == 1) {
+                if(this.drawerState == 1 && event.pageY+520 > 822) {
                     let drawer = document.getElementById('drawer');
-                    drawer.setAttribute("y",event.pageY+265)
+                    drawer.setAttribute("y",event.pageY+520)
                 }
                 if(this.lighterState == 1) {
                     let obj = document.getElementById('lighterCursor');
@@ -245,8 +391,16 @@ export default {
                     }
 
                 } 
+        },
+        handleUpdate(event,data) {
+            if(event == 1) {
+                console.log('UPDATING')
+                this.socket.socket.emit('diary-puzzle',data);
+            }
+            if(event == 2) {
+                this.socket.socket.emit('state',data);
+            }
         }
-        
     },
     computed: {
         update() {
@@ -255,10 +409,25 @@ export default {
             } else {
                 return false;
             }
+        },
+        socket() {
+            return this.$store.state.socket;
         }
     },
     mounted() {
         document.addEventListener('mousemove', this.onMouseMove);
+        this.socket.socket.on('diary-update',(data) => {
+            console.log('PAGE UPDATE',data)
+            if(data.id && ['L','R'].indexOf(data.pageSide) > -1) {
+                if(!this.pageState[data.id]) {
+                    this.pageState[data.id] = {
+                        'L':0,
+                        'R':0
+                    }
+                }
+                this.pageState[data.id][data.pageSide] = data.state;
+            }
+        })
     }
 }
 </script>
