@@ -92,6 +92,11 @@ export default {
           page:'/'
         },
         {
+          id: 4,
+          text: 'KITCHEN',
+          page:'/Kitchen'
+        },
+        {
           id: 1,
           text: 'ABOUT',
           page:'/About'

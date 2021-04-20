@@ -42,6 +42,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../components/games/pose/pose.vue')
+  },
+  {
+    path: '/kitchen',
+    name: 'KITCHEN',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../components/games/kitchen/kitchen.vue')
   }
 ]
 
