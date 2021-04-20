@@ -3,7 +3,7 @@
 //Match the pose in the painting with your body to complete the puzzle
 
 let faceapi;
-let video;
+let video,video2;
 let detections;
 let pose;
 let img;
@@ -28,17 +28,14 @@ function preload() {
   
   youWin = loadImage('boo.jpg');
   
-  video = createCapture(VIDEO);
+  
   
 
 }
 
 function setup() {
-  
-  
-  
-  
-  
+  video = createCapture(VIDEO);
+  video2 = video;
   createCanvas(1200, 416);
   // load up your video
   
@@ -48,19 +45,14 @@ function setup() {
   poseNet.on('pose', function (results) {
       poses = results;
       if (poses.length > 0) {  
-        //console.log(poseNet);
-        
+        //console.log("poseNet on");
         pose = poses[0].pose;
     }
     });
   
-  faceapi = ml5.faceApi(video, detection_options, faceReady);
-  //textAlign(RIGHT);
-
-  // Create a new poseNet method with a single detection
   
-  // This sets up an event that fills the global variable "poses"
-  // with an array every time new poses are detected
+  
+  
 }
 
 
@@ -70,12 +62,13 @@ function faceReady() {
     console.log('face API ready!');
     //console.log(faceapi);
     faceapi.detect(gotResults);
+  
   }
 
 function modelReady() {
     console.log('poseNet ready!');
     //console.log(poseNet);
-    
+  faceapi = ml5.faceApi(video, detection_options, faceReady);
   }
 
 function gotResults(err, result) {
@@ -97,6 +90,7 @@ function gotResults(err, result) {
   }
   
 function draw() {
+  
   image(video,600,0,320,240);
   
   
@@ -114,6 +108,7 @@ function draw() {
     
     if (leftWrist.y/q < 5){
     pose2=true;
+      //console.log("pose 2 done");
   }
       
   }
@@ -123,6 +118,7 @@ function draw() {
     if (d > 20 && a/q < 2.5 ) {
 
       pose1=true;
+     // console.log("pose 1 done");
     }
   
   
