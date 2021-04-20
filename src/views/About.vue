@@ -1,9 +1,11 @@
  <template>
   <div>
-    <v-container fluid class="HomeHero" fill-width fill-height
+    <v-container fluid fill-width fill-height
       v-bind:style ="heroHeight"
     >
-        <v-container align="center">
+      <pose></pose>
+    </v-container>
+    <v-container align="center">
           <v-container>
             <v-row align="center"> 
               <v-col class = "Welcome mb-2" align = "center"
@@ -35,11 +37,11 @@ dialogue stuff i'll work on from scene to scene
             </v-row>
           </v-container>
         </v-container>
-    </v-container>
   </div>
 </template>
 
 <script>
+import pose from '../components/games/pose/pose.vue'
   export default {
     name:'About',
     data() {
@@ -51,6 +53,9 @@ dialogue stuff i'll work on from scene to scene
           SubText : 'mt-4 text-body-1 font-weight-medium justify-center'
         }
       }
+    },
+    components: {
+      pose
     },
     computed: {
       heroHeight() {
