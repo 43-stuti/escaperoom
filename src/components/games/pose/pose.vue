@@ -23,6 +23,8 @@ export default {
         mouth2_y:null,
         rightWrist:null,
         leftWrist:null,
+        eyeR:null,
+        eyeL:null,
         a:null,
         q:null,
         d:null,
@@ -49,7 +51,7 @@ export default {
         this.faceapi.detect(this.gotResults);
     },
     modelReady() {
-        //console.log(poseNet);
+        console.log("posenet ready");
         this.faceapi = ml5.faceApi(this.video, this.detection_options, this.faceReady);
     },
     gotResults(err, result) {
@@ -98,9 +100,9 @@ export default {
         }
         p5.setup = () => {
             this.video = p5.createCapture(p5.VIDEO);
-            this.video2 = this.video;
+            
             //p5.createCanvas(1200, 416);
-            var canvas = p5.createCanvas(500, 500)
+            var canvas = p5.createCanvas(1200, 500)
             canvas.parent("p5Canvas");
             // load up your video
             
@@ -118,19 +120,20 @@ export default {
         p5.draw = () => {
             p5.image(this.video,600,0,320,240);
             if(this.pose){
-                let eyeR = this.pose.rightEye;
-                let eyeL = this.pose.leftEye;
-                this.q = p5.dist(eyeR.x, eyeR.y, eyeL.x, eyeL.y);
+                console.log("posenet detecting");
+                 this.eyeR = this.pose.rightEye;
+                 this.eyeL = this.pose.leftEye;
+                this.q = p5.dist(this.eyeR.x, this.eyeR.y, this.eyeL.x, this.eyeL.y);
                 
-                let rightWrist = this.pose.rightWrist;
-                let leftWrist = this.pose.leftWrist;
+                 this.rightWrist = this.pose.rightWrist;
+                 this.leftWrist = this.pose.leftWrist;
                 //console.log(leftWrist.y/q);
-                this.a = p5.dist(rightWrist.x,rightWrist.y, this.mouth_x,this.mouth_y);
-                //console.log(a/q);
+                this.a = p5.dist(this.rightWrist.x,this.rightWrist.y, this.mouth_x,this.mouth_y);
+                console.log(this.a/this.q);
                 
-                if (leftWrist.y/this.q < 5){
+                if (this.leftWrist.y/this.q < 5){
                 this.pose2=true;
-                //console.log("pose 2 done");
+                console.log("pose 2 done");
                 }
                 
             }
