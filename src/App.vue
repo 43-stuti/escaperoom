@@ -103,10 +103,14 @@ export default {
 
 <style>
    .chatcard {
-       position: absolute;
-       margin-right: 1vw !important;
-       margin-top:-48vh;
-       margin-left:82vw;
+       position: fixed;
+        top: 75vh;
+  z-index: 1;
+  /* centering */
+  right: -60px !important;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);  
    }
     #chat {
         height: 100%;
