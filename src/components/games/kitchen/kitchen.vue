@@ -225,7 +225,7 @@ export default {
           message:'You found the special cheese for the pizza'
         },
         {
-          items:['hair','oil'],
+          items:['hair'],
           ingredient:'Herbs',
           message:'You found the special cheese for the pizza'
         }

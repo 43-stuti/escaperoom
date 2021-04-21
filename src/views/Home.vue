@@ -28,16 +28,49 @@
           </v-container>
         </v-container>
     </v-container>
+    <v-container class="Work" fluid fill-width>
+        <v-container class="my-12 ">
+        <v-row>
+            <v-col
+            :cols = 5>
+                <v-img src="/dough.jpg" aspect-ratio="1.5"></v-img>
+            </v-col>
+            <v-col
+            :cols = 12
+            :xl = 5
+            :lg = 5
+            :md = 5
+            :sm = 12
+            >
+                <v-container>
+                    <v-row class="font-weight-bold green--text text--darken-2">
+                        Our Style
+                    </v-row>
+                    <v-row  class="text-body-2 font-weight-regular mt-12 white--text">
+                      To serve you the best, we carefully handpick all our ingredients. 
+                    </v-row>
+                     <v-row  class="text-body-2 font-weight-thin mt-12 white--text">
+                       From cheese, vegetables or sausages. We make sure the best reaches your plate. We have built a beautiful community of people who are always there to ensure that you have an unforgettable experience once at Sal's .
+                    </v-row>
+                </v-container>
+            </v-col>
+        </v-row>
+        </v-container>
+    </v-container>
+    <v-container fluid fill-width fill-height>
+      <Testimonials></Testimonials>
+    </v-container>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 
-
+import Testimonials from '../components/homepage/testimonials.vue'
 export default {
   name: 'Home',
   components: {
+    Testimonials
   },
   data() {
     return {
@@ -85,4 +118,7 @@ export default {
   .Welcome {
        z-index: 1;
   }
+  .Work {
+        background-color: rgb(34, 33, 33);
+    }
 </style>
