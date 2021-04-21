@@ -6,6 +6,7 @@
         <v-container align="center">
           <v-container>
             <v-row align="center"> 
+
               <v-col class = "Welcome mb-2" align = "center"
                     :cols = 12
                     :lg = 12

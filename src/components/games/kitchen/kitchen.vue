@@ -31,21 +31,22 @@
                     <v-row>
                       <v-col
                       :cols = 3
-                      v-for="item in rawItems"
-                      :key="item.colour"
-                      :id="item.id"
+                      v-for="(item,index) in rawItems"
+                      :key="index"
                       class="rawItem"
                       v-bind:style="checkHover(item.id) ? { 'color': item.hex,'opacity':1 } : {'opacity':0 }"
                       @mouseover="mouseOver($event)"
                       @click="addToBowl($event)"
                       >
+                      <div v-if="index< 6" :id="index+1">
                         {{item.text}}
+                      </div>
                       </v-col>
                     </v-row>
                 </div>
               </v-col>
               <v-col 
-                :cols = 2
+                :cols = 4
                  v-bind:style="{color:'#FFFFFF'}"
               >
                 <div class="mixer px-3" >
@@ -58,7 +59,7 @@
                         :cols = 3
                         v-for="(item,index) in inBowl"
                         :key="index"
-                        :id="item.id"
+                        :id="index+1"
                         class="rawItem1"
                         @click="removeFromBowl(index)"
                         >
@@ -72,6 +73,27 @@
                       {{currentIngredient.message}}
                     </v-row>
                   </div>
+                </div>
+              </v-col>
+              <v-col 
+                :cols = 4
+              >
+                <div>
+                    <v-row>
+                      <v-col
+                      :cols = 3
+                      v-for="(item,index) in rawItems"
+                      :key="index"
+                      class="rawItem"
+                      v-bind:style="checkHover(item.id) ? { 'color': item.hex,'opacity':1 } : {'opacity':0 }"
+                      @mouseover="mouseOver($event)"
+                      @click="addToBowl($event)"
+                      >
+                      <div v-if="index>= 6" :id="index+1">
+                        {{item.text}}
+                      </div>
+                      </v-col>
+                    </v-row>
                 </div>
               </v-col>
             </v-row>
@@ -133,7 +155,7 @@ export default {
       rawItems:[
         {
           id:1,
-          text:'onion',
+          text:'milk',
           colour:4,
           hex:'#FDE079'
         },
@@ -142,7 +164,8 @@ export default {
         },
         {
           id:3,
-          text:'tomato'
+          text:'tomato',
+          hex:'#EC6F6F'
         },
         {
           id:4
@@ -161,21 +184,49 @@ export default {
         },
         {
           id:8,
-          text:'tomato'
+          text:'blood',
+          hex:'#EC6F6F'
         },
         {
           id:9,
-          text:'butter'
+          text:'butter',
+          hex:'#FDE079'
         },
         {
           id:10,
-          text:'water'
+          text:'bone dust',
+          hex:'#80A9F8'
+        },
+        {
+          id:11,
+          text:'garlic',
+          hex:'#FDE079'
         }
       ],
       ingredients: [
         {
-          items:['water','onion'],
+          items:['milk','salt','lemon'],
           ingredient:'Cheese',
+          message:'You found the special cheese for the pizza'
+        },
+        {
+          items:['blood','tomato','garlic'],
+          ingredient:'Sauce',
+          message:'You found the special secret Sauce for the pizza!'
+        },
+        {
+          items:['bone dust','flour','water'],
+          ingredient:'Dough',
+          message:'You found the special cheese for the pizza'
+        },
+        {
+          items:['flesh','oil'],
+          ingredient:'Pepperoni',
+          message:'You found the special cheese for the pizza'
+        },
+        {
+          items:['hair','oil'],
+          ingredient:'Herbs',
           message:'You found the special cheese for the pizza'
         }
       ],
@@ -197,7 +248,7 @@ export default {
     },
     mouseOver: function(event) {
       if(event.target.id && this.rawItems[event.target.id-1] && this.currentColour && this.rawItems[event.target.id-1].hex == this.currentColour) {
-        console.log('EVENT',event.target,this.currentColour,this.rawItems[event.target.id-1]);
+        //console.log('EVENT',event.target,this.currentColour,this.rawItems[event.target.id-1]);
         this.currentHovered.push(parseInt(event.target.id));
       }
     },
@@ -211,7 +262,6 @@ export default {
       } 
     },
     checkHover(id) {
-      console.log('LALA',this.currentHovered.indexOf(id),id,this.currentHovered)
       if(this.currentHovered.indexOf(id) > -1) {
         return 1;
       } else {
@@ -219,20 +269,24 @@ export default {
       }
     },
     addToBowl(event) {
+      console.log('BURRAAAH',event.target,this.rawItems[event.target.id-1])
       if(event.target.id && this.rawItems[event.target.id-1]) {
         let obj = this.rawItems[event.target.id-1];
-        this.inBowl.push(obj);
-        if(this.currentIngredient) {
-          this.currentIngredient = null;
-        }
-        let index = this.checkIngredient();
-        if(index) {
-          this.inBowl = [];
-          this.formedIngredients.push(this.ingredients[index-1]);
-          this.ingredients.splice(index-1,1);
-          this.currentIngredient = this.formedIngredients[this.formedIngredients.length-1];
-          this.pizzaState = index;
-          console.log('this.currentIngredient',this.currentIngredient)
+        var itemNames = Array.from(Object.values(this.inBowl), item => item.text);
+        if(itemNames.indexOf(obj.text) == -1) {
+          this.inBowl.push(obj);
+          if(this.currentIngredient) {
+            this.currentIngredient = null;
+          }
+          let index = this.checkIngredient();
+          if(index) {
+            this.inBowl = [];
+            this.formedIngredients.push(this.ingredients[index-1]);
+            this.ingredients.splice(index-1,1);
+            this.currentIngredient = this.formedIngredients[this.formedIngredients.length-1];
+            this.pizzaState = index;
+            console.log('this.currentIngredient',this.currentIngredient)
+          }
         }
       }
     },

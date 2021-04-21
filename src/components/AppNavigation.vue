@@ -104,6 +104,10 @@ export default {
           id: 3,
           text: 'DIARY',
           page:'/Diary'
+        },{
+          id: 3,
+          text: 'REPORTS',
+          page:'/Reports'
         }],
         3:[{
           id: 0,
