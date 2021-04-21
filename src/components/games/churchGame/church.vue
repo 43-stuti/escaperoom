@@ -8,6 +8,9 @@
     
     <div id="popUpBox">
       <iframe src="https://editor.p5js.org/zsk236/embed/FV0X25LzC" width=800px height=400px></iframe>
+      
+      <button id='button'>CLOSE</button>
+      
 	<div id="wait">
 	
 	</div>

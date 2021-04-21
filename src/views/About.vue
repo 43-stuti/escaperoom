@@ -32,8 +32,8 @@
               Sal’s Pizza is a story of the American dream. After immigrating from Italy in the 1960s, Sal and his family have dedicated themselves to serving the finest pizza in the neighborhood. Despite having pennies to their name, the hard work of Sal’s family quickly established Sal’s Pizza as a proud cornerstone for a small, close-knit Italian community. Our mission is for each slice to be a celebration of our family’s heritage and roots. Our menu highlights the best of the Italian-American experience, combining our centuries-old secret family recipe with modern American toppings. 
             </v-row>
             <v-row>
-              Sal’s Pizza is also a story of resilience. In 1972, tragedy struck Sal’s Pizza after the restaurant was set ablaze. The beloved family and community patriarch, Sal, went missing, leaving behind his beloved wife and children. Despite their losses, Sal’s family continued to run and grow the business, preserving Sal’s legacy for generations. Sal’s Pizza is survived by his two children.
-dialogue stuff i'll work on from scene to scene
+              Sal’s Pizza is also a story of resilience. In 1982, tragedy struck Sal’s Pizza after the restaurant was set ablaze. The beloved family and community patriarch, Sal, went missing, leaving behind his beloved wife and children. To add insult to injury this tragic event took place on Sal Jr.’s birthday, and has since become a time of reflection. Despite their losses, Sal’s family continued to run and grow the business, preserving Sal’s legacy for generations. Sal’s Pizza is survived by his two children.
+
             </v-row>
           </v-container>
         </v-container>
