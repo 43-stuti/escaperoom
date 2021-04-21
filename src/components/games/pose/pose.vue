@@ -109,11 +109,10 @@ export default {
             //video.size(width/2,height/2);
             this.video.hide(); // Hide the video element, and just show the canvas
             this.poseNet = ml5.poseNet(this.video, this.modelReady);
-            this.poseNet.on('pose', function (results) {
+            this.poseNet.on('pose',  (results) => {
                 this.poses = results;
                 if (this.poses.length > 0) {  
-                    //console.log("poseNet on");
-                    this.pose = this.poses[0][this.pose];
+                    this.pose = this.poses[0].pose;
                 }
             });
         }

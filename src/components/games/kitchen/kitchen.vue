@@ -270,10 +270,10 @@ export default {
             return {height: '100vh'};
         }
       }
-    },
-    mounted() {
-       document.addEventListener('mousemove', this.onMouseMove);
-    }
+  },
+  mounted() {
+      document.addEventListener('mousemove', this.onMouseMove);
+  }
 }
 </script>
 
