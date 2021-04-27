@@ -95,8 +95,8 @@ export default {
     })
     const script = (p5) => {
         p5.preload = () => {
-        this.img = p5.loadImage('/pose/scream.jpeg');
-        this.youWin = p5.loadImage('/pose/boo.jpg');
+        this.img = p5.loadImage('/pose/family.png');
+        this.youWin = p5.loadImage('/pose/youwin.jpg');
         }
         p5.setup = () => {
             this.video = p5.createCapture(p5.VIDEO);
@@ -119,7 +119,7 @@ export default {
         p5.draw = () => {
             p5.image(this.video,600,0,320,240);
             if(this.pose){
-                console.log("posenet detecting");
+                //console.log("posenet detecting");
                  this.eyeR = this.pose.rightEye;
                  this.eyeL = this.pose.leftEye;
                 this.q = p5.dist(this.eyeR.x, this.eyeR.y, this.eyeL.x, this.eyeL.y);
@@ -128,21 +128,21 @@ export default {
                  this.leftWrist = this.pose.leftWrist;
                 //console.log(leftWrist.y/q);
                 this.a = p5.dist(this.rightWrist.x,this.rightWrist.y, this.mouth_x,this.mouth_y);
-                console.log(this.a/this.q);
+                //console.log(this.a/this.q);
                 
-                if (this.leftWrist.y/this.q < 5){
+                if ((this.leftWrist.y/this.q > 6 && this.leftWrist.y/this.q <9) && (this.rightWrist.y/this.q > 6 && this.rightWrist.y/this.q<9) && (this.d > 35)){
                 this.pose2=true;
                 console.log("pose 2 done");
                 }
-                
-            }
-            this.d = parseInt(p5.dist(this.mouth_x, this.mouth_y, this.mouth2_x, this.mouth2_y));
-                // if mouth is open
-            if (this.d > 20 && this.a/this.q < 2.5 ) {
+                this.d = parseInt(p5.dist(this.mouth_x, this.mouth_y, this.mouth2_x, this.mouth2_y));
+                if (this.mouth_x/this.q>7 && this.rightWrist.x/this.q<4 && this.d/this.q<25){
 
                 this.pose1=true;
                 console.log("pose 1 done");
             }
+            }
+            
+                
             if (this.pose1 && this.pose2){
                 if(!this.gameState) {
                     this.gameState = 1;
