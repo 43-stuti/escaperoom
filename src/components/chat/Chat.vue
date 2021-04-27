@@ -12,11 +12,11 @@
             </div>
             <div class="separatorChat"></div>
             <div class="message">
-                <form @submit.prevent="sendMessage">
-                    <div class="gorm-group pb-3">
-                        <input type="text" autocomplete="off" v-model="message" class="form-control" id="custom">
-                    </div>
-                </form>
+                <v-form v-on:submit.prevent="sendMessage">
+                    <v-text-field
+                        v-model="message"
+                        ></v-text-field>
+                </v-form>
             </div>
         </div>
   </v-card>
@@ -56,7 +56,6 @@ export default {
         },
         socket() {
             this.$store.state.socket.socket.on('new_message',(data) => {
-                console.log('IS THERE ??',data)
                 this.messages.push(data);
             })
         }
@@ -73,31 +72,6 @@ export default {
             //this.messages = [...this.messages, msgObj];
             this.message = '';
             this.labelState = 1;
-        },
-         chatBubbleStyle(index) {
-            let margin = '0px';
-            if(this.messages[index-1] && this.messages[index-1].user == this.messages[index].user) {
-                margin = '1px'
-            } else {
-                margin = '10px'
-            }
-            if(this.messages[index].user == this.characterName)   {
-                return {
-                    'display': 'block',
-                    'position': 'relative',
-                    'float':'right',
-                    'clear': 'both',
-                    'margin-top':margin
-                };
-            } else {
-                return {
-                    'display': 'block',
-                    'position': 'relative',
-                    'float':'left',
-                    'clear': 'both',
-                    'margin-top':margin
-                };
-            }
         }
     }
 }
@@ -116,18 +90,15 @@ export default {
         font-weight: normal;
         font-style: normal;
     }
-    #text {
-        color: rgb(42, 139, 23);
-    }
     .chatscreen {
-        font-family: "Roboto Mono";
-        font-weight: 200;
+        font-family: "montserrat";
+        font-weight: 400;
         font-size: 14px;
         display: inline-block;
         width: 100%;
         height: 100%;
-        color: rgb(42, 139, 23);
-        background-color: black;
+        color: rgb(32, 32, 32);
+        background-color: rgb(231, 231, 231);
         vertical-align: top;
         overflow: hidden;
     }
@@ -141,10 +112,12 @@ export default {
     .separatorChat {
         height: 0.9px;
         width: 100%;
-        background-color: rgb(42, 139, 23);
-        margin-bottom: 15px;
+        background-color: rgb(170, 169, 169);
+        margin-bottom: 5px;
     }
     .chats {
+        margin-top: 20px;
+        margin-left: 10px;
         height: 40vh;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
@@ -154,11 +127,8 @@ export default {
         display: none;
     }
     .message {
-        color: rgb(42, 139, 23);
         padding-left: 30px;
         padding-right: 30px;
-        height: 5vh;
-        vertical-align: end;
     }
     .displayprompt {
         font-size: 14px;
@@ -171,11 +141,8 @@ export default {
         background: transparent;
         border:0.1px solid;
         border-radius: '100px';
-        color: rgb(42, 139, 23);
-        border-color: rgb(42, 139, 23);
     }
     .separator {
-        background-color: rgb(42, 139, 23);
         height: 5px;
         display: block;
         margin-bottom: 40px;

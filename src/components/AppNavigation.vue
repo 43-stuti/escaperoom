@@ -92,22 +92,14 @@ export default {
           page:'/'
         },
         {
-          id: 4,
-          text: 'KITCHEN',
-          page:'/Kitchen'
-        },
-        {
           id: 1,
           text: 'ABOUT',
           page:'/About'
-        },{
+        },
+        {
           id: 3,
           text: 'DIARY',
           page:'/Diary'
-        },{
-          id: 3,
-          text: 'REPORTS',
-          page:'/Reports'
         }],
         3:[{
           id: 0,
@@ -124,9 +116,59 @@ export default {
           text: 'DIARY',
           page:'/Diary'
         }, {
-          id: 2,
+          id: 4,
+          text: 'REPORTS',
+          page:'/Reports'
+        }],
+        4:[{
+          id: 0,
+          text: 'HOME',
+          page:'/'
+        },
+        {
+          id: 1,
+          text: 'ABOUT',
+          page:'/About'
+        },
+        {
+          id: 3,
+          text: 'DIARY',
+          page:'/Diary'
+        }, {
+          id: 4,
+          text: 'REPORTS',
+          page:'/Reports'
+        }, {
+          id: 5,
           text: 'CHURCH',
           page:'/Church'
+        }],
+        5:[{
+          id: 0,
+          text: 'HOME',
+          page:'/'
+        },
+        {
+          id: 1,
+          text: 'ABOUT',
+          page:'/About'
+        },
+        {
+          id: 3,
+          text: 'DIARY',
+          page:'/Diary'
+        }, {
+          id: 4,
+          text: 'REPORTS',
+          page:'/Reports'
+        }, {
+          id: 5,
+          text: 'CHURCH',
+          page:'/Church'
+        }, {
+          id: 6,
+          text: 'KITCHEN',
+          page:'/Kitchen'
         }]
       },
       activeClass : 'font-weight-bold grey--text text--darken-3'

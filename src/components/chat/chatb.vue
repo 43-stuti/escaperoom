@@ -1,15 +1,8 @@
 <template>
     <div>
-        <div class="container">
-            <div class="bubbleC"> 
-                <div class="bubble">
-                        <div>
-                            <h6 v-if ="!this.message.self">{{message.user}}</h6>
-                        </div>
-                        <div>
-                            {{message.message}}
-                        </div>
-                </div>
+        <div class="bubble">
+            <div :style ="!this.message.gm ? {'backgroundColor':'#cbd4cd','paddingTop':'3px','paddingBottom':'3px','paddingLeft':'5px','paddingRight':'5px','borderRadius':'6px'} : {'backgroundColor':'#58cc72','paddingTop':'3px','paddingBottom':'3px','paddingLeft':'5px','paddingRight':'5px','borderRadius':'6px'}">
+                {{message.message}}
             </div>
         </div>
     </div>
@@ -28,13 +21,9 @@ export default {
 }
 </script>
 <style scoped>
-    .container {
-        margin-bottom:2px;
-    }
-    .bubbleC {
-        color: rgb(42, 139, 23);;
-    }
     .bubble {
+        margin-left: 7px;
+        margin-top: 7px;
         display: inline-block;
     }
 </style>
