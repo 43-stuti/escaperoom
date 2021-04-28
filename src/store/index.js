@@ -12,7 +12,7 @@ export default new Vuex.Store({
     },
     clientCount:0,
     lastAddedClient:null,
-    gameState:5
+    gameState:1
   },
   mutations: {
     connect(state,socketObj) {
