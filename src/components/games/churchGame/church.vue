@@ -68,7 +68,8 @@ export default {
      // this.renderer.render(this.scene, this.camera);
     },
     closepopUp() {
-      this.showModal = false
+      let popUpBox = document.getElementById('popUpBox');
+      popUpBox.style.display = "none";
     }
   },
   mounted() {
