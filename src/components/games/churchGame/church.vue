@@ -6,10 +6,10 @@
     <audio loop id='track2' src='/church/assets/confession/Sal.mp3' type='audio/mpeg' preload='auto' style='display: none'></audio>
     <audio loop id='track3' src='/church/assets/confession/Big-Tony.mp3' type='audio/mpeg' preload='auto' style='display: none'></audio>
     
-    <div id="popUpBox">
+    <div v-if="showModal" id="popUpBox">
       <iframe src="https://editor.p5js.org/zsk236/embed/FV0X25LzC" width=800px height=400px></iframe>
       
-      <button id='button'>CLOSE</button>
+      <button @click="closepopUp" id='button'>CLOSE</button>
       
 	<div id="wait">
 	
@@ -37,7 +37,8 @@ export default {
         SubText : 'mt-4 text-body-1 font-weight-medium justify-center'
       },
       glScene:null,
-      index:null
+      index:null,
+      showModal:true
     }
   },
   computed: {
@@ -65,6 +66,9 @@ export default {
   methods: {
     render () {
      // this.renderer.render(this.scene, this.camera);
+    },
+    closepopUp() {
+      this.showModal = false
     }
   },
   mounted() {
