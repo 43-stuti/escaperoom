@@ -336,7 +336,7 @@ export default {
             this.ingredients.splice(index-1,1);
             this.currentIngredient = this.formedIngredients[this.formedIngredients.length-1];
             this.pizzaState = index;
-            if(this.formedIngredients.length == 1) {
+            if(this.formedIngredients.length == 4) {
               console.log('GAME OVER');
               this.overlay = true;
             }
@@ -439,7 +439,7 @@ export default {
       width: 150px; 
       height: 150px;
       border-radius: 50%;
-      opacity:30%
+      opacity:50%
   }
   .rawItem {
     z-index: 30;
