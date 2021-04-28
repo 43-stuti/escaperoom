@@ -1,8 +1,6 @@
 <template>
   <v-card class=" main">
-      <div class="top" @click="minimise($event)">
-      </div>
-      <div v-if="showchat" class="chatscreen">
+      <div class="chatscreen">
            <div>
                 <div ref="messageView" class="chats">
                     <div class="messages" v-for="(msg, index) in messages" :key="index">
