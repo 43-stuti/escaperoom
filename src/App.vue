@@ -33,7 +33,7 @@ export default {
     },
     mounted() {
         //this.$store.dispatch('connect');
-        this.sockObj.socket = io('https://immense-citadel-10641.herokuapp.com',{
+        this.sockObj.socket = io('http://localhost:5000/',{
             "rejectUnauthorized" : false
         })
         this.sockObj.socket.on('gameStateUpdate',(data) => {
@@ -103,14 +103,14 @@ export default {
 
 <style>
    .chatcard {
-       position: fixed;
-        top: 75vh;
-  z-index: 1;
-  /* centering */
-  right: -60px !important;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);  
+        position: fixed;
+        top: 72vh;
+        z-index: 1;
+        /* centering */
+        right: -60px !important;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);  
    }
     #chat {
         height: 100%;

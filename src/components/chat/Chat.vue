@@ -1,6 +1,8 @@
 <template>
   <v-card class=" main">
-      <div class="chatscreen">
+      <div class="top" @click="minimise($event)">
+      </div>
+      <div v-if="showchat" class="chatscreen">
            <div>
                 <div ref="messageView" class="chats">
                     <div class="messages" v-for="(msg, index) in messages" :key="index">
@@ -31,7 +33,8 @@ export default {
             message: '',
             messages: [],
             onlineUsers: [],
-            labelState: 0
+            labelState: 0,
+            showchat:true
         }
     },
     name:'Chat',
@@ -72,6 +75,10 @@ export default {
             //this.messages = [...this.messages, msgObj];
             this.message = '';
             this.labelState = 1;
+        },
+        minimise(e) {
+            console.log(e);
+            this.showchat = !this.showchat;
         }
     }
 }
@@ -89,6 +96,10 @@ export default {
         src: url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
         font-weight: normal;
         font-style: normal;
+    }
+    .top {
+        height: 20px;
+        background-color: rgb(43, 43, 43);
     }
     .chatscreen {
         font-family: "montserrat";

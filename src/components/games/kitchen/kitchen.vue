@@ -2,7 +2,7 @@
   <div>
     <v-container class="kitchenMain"
     >
-      <v-row>
+      <v-row v-if="!absolute">
          <v-col class = "mb-2" align = "center"
                     :cols = 8
                     :lg = 8
@@ -36,9 +36,9 @@
                       class="rawItem"
                       v-bind:style="checkHover(item.id) ? { 'color': item.hex,'opacity':1 } : {'opacity':0 }"
                       @mouseover="mouseOver($event)"
-                      @click="addToBowl($event)"
+                      @click="addToBowlSock($event)"
                       >
-                      <div v-if="index< 6" :id="index+1">
+                      <div v-if="index< 9" :id="index+1">
                         {{item.text}}
                       </div>
                       </v-col>
@@ -61,7 +61,7 @@
                         :key="index"
                         :id="index+1"
                         class="rawItem1"
-                        @click="removeFromBowl(index)"
+                        @click="removeFromBowlSock(index)"
                         >
                         {{item.text}}
                       </v-col>
@@ -87,9 +87,9 @@
                       class="rawItem"
                       v-bind:style="checkHover(item.id) ? { 'color': item.hex,'opacity':1 } : {'opacity':0 }"
                       @mouseover="mouseOver($event)"
-                      @click="addToBowl($event)"
+                      @click="addToBowlSock($event)"
                       >
-                      <div v-if="index>= 6" :id="index+1">
+                      <div v-if="index>= 9" :id="index+1">
                         {{item.text}}
                       </div>
                       </v-col>
@@ -109,6 +109,13 @@
           </v-col>
       </v-row>
     </v-container>
+    <v-overlay class="overlay1"
+            :absolute="absolute"
+            :opacity = 1
+            :value="overlay"
+          >
+          <h1>ESCAPED!!</h1>
+     </v-overlay>
   </div>
 </template>
 
@@ -129,7 +136,6 @@ export default {
         CoverTextLight : 'text-h4 text-sm-h4 text-md-h4 text-lg-h4 text-xl-h1 font-weight-regular text-left green--text text--darken-2 mt-12',
         SubText : 'mt-4 text-body-1 font-weight-medium justify-center'
       },
-      socket:null,
       colourList: [
         {
           id:1,
@@ -152,7 +158,7 @@ export default {
           hex:'#FDE079'
         }
       ],
-      rawItems:[
+       rawItems:[
         {
           id:1,
           text:'milk',
@@ -168,16 +174,20 @@ export default {
           hex:'#EC6F6F'
         },
         {
-          id:4
-        },
-        {
-          id:5,
-        },
-        {
-          id:6,
+          id:4,
           text:'water',
           colour:3,
           hex:'#80A9F8'
+        },
+        {
+          id:5,
+          text:'bone dust',
+          hex:'#7FC873'
+        },
+        {
+          id:6,
+          text:'garlic',
+          hex:'#FDE079'
         },
         {
           id:7,
@@ -192,15 +202,54 @@ export default {
           text:'butter',
           hex:'#FDE079'
         },
-        {
-          id:10,
-          text:'bone dust',
-          hex:'#80A9F8'
+         {
+          id:10
         },
         {
           id:11,
-          text:'garlic',
+           text:'lemon',
           hex:'#FDE079'
+        },
+        {
+          id:12,
+          text:'salt',
+          hex:'#FDE079'
+        },
+        {
+          id:13,
+          text:'flour',
+          hex:'#FDE079'
+        },
+        {
+          id:14,
+          text:'peanut',
+          hex:'#7FC873'
+        },
+        {
+          id:15
+        },
+        {
+          id:16,
+          text:'flesh',
+          hex:'#80A9F8'
+        },
+        {
+          id:17,
+          text:'cumin',
+          hex:'#EC6F6F'
+        },
+        {
+          id:18,
+          text:'oil',
+          hex:'#80A9F8'
+        },
+        {
+          id:19,
+          text:'hair',
+          hex:'#EC6F6F'
+        },
+        {
+          id:20
         }
       ],
       ingredients: [
@@ -223,11 +272,6 @@ export default {
           items:['flesh','oil'],
           ingredient:'Pepperoni',
           message:'You found the special cheese for the pizza'
-        },
-        {
-          items:['hair'],
-          ingredient:'Herbs',
-          message:'You found the special cheese for the pizza'
         }
       ],
       currentColour:null,
@@ -235,7 +279,8 @@ export default {
       inBowl: [],
       formedIngredients: [],
       currentIngredient:null,
-      pizzaState:null
+      pizzaState:null,
+      overlay:false
     }
   },
   methods: {
@@ -268,10 +313,16 @@ export default {
         return 0;
       }
     },
+    addToBowlSock(event) {
+      console.log('eventevent',event.target.id)
+      var x = event.target.id;
+      this.socket.socket.emit('bowl-update',{
+        id:x
+      });
+    },
     addToBowl(event) {
-      console.log('BURRAAAH',event.target,this.rawItems[event.target.id-1])
-      if(event.target.id && this.rawItems[event.target.id-1]) {
-        let obj = this.rawItems[event.target.id-1];
+      if(event.id && this.rawItems[event.id-1]) {
+        let obj = this.rawItems[event.id-1];
         var itemNames = Array.from(Object.values(this.inBowl), item => item.text);
         if(itemNames.indexOf(obj.text) == -1) {
           this.inBowl.push(obj);
@@ -285,10 +336,17 @@ export default {
             this.ingredients.splice(index-1,1);
             this.currentIngredient = this.formedIngredients[this.formedIngredients.length-1];
             this.pizzaState = index;
+            if(this.formedIngredients.length == 1) {
+              console.log('GAME OVER');
+              this.overlay = true;
+            }
             console.log('this.currentIngredient',this.currentIngredient)
           }
         }
       }
+    },
+    removeFromBowlSock(id) {
+      this.socket.socket.emit('bowl-remove',id);
     },
     removeFromBowl(id) {
       this.inBowl.splice(id,1)
@@ -323,10 +381,19 @@ export default {
           default:
             return {height: '100vh'};
         }
-      }
+      },
+      socket() {
+            return this.$store.state.socket;
+        }
   },
   mounted() {
       document.addEventListener('mousemove', this.onMouseMove);
+      this.socket.socket.on('bowl-update-socket',(data) => {
+            this.addToBowl(data);
+        })
+      this.socket.socket.on('bowl-remove-socket',(data) => {
+          this.removeFromBowl(data);
+      })
   }
 }
 </script>
@@ -376,6 +443,7 @@ export default {
   }
   .rawItem {
     z-index: 30;
+    margin-bottom: 30px;
     font-weight: 600;
   }
   .rawItem1 {
@@ -387,5 +455,8 @@ export default {
     color: darkblue;
   }
   #bowl {
+  }
+  .overlay1 {
+    z-index: 100;
   }
 </style>
