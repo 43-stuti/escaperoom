@@ -439,7 +439,7 @@ export default {
       width: 150px; 
       height: 150px;
       border-radius: 50%;
-      opacity:50%
+      opacity:30%
   }
   .rawItem {
     z-index: 30;
