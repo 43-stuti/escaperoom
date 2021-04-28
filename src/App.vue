@@ -33,7 +33,7 @@ export default {
     },
     mounted() {
         //this.$store.dispatch('connect');
-        this.sockObj.socket = io('http://localhost:5000/',{
+        this.sockObj.socket = io('https://immense-citadel-10641.herokuapp.com',{
             "rejectUnauthorized" : false
         })
         this.sockObj.socket.on('gameStateUpdate',(data) => {
