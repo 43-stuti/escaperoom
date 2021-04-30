@@ -57,9 +57,9 @@ new MTLLoader( manager )
       .load( 'confessional+2.obj', function ( object ) {
 
         object.position.z = .8;
-        object.position.x = -.7;
+        object.position.x = -3;
         //object.position.z = -3;
-        object.scale.set(.025,.03,.03);
+        object.scale.set(.015,.02,.015);
         object.rotation.y = Math.PI/2;
         
         scene.add( object );
@@ -79,10 +79,11 @@ new MTLLoader( manager )
       .setPath( '/church/assets/' )
       .load( 'confessional+2.obj', function ( object4 ) {
 
-        object4.position.z = -5;
-        object4.position.x = .7;
+        object4.position.z = 0;
+        object4.position.x = 4;
+        //object4.position.y = 1;
         //object.position.z = -3;
-        object4.scale.set(.025,.03,.03);
+        object4.scale.set(.015,.02,.015);
         object4.rotation.y = -Math.PI/2;
         object4.userData.confessional = true;
         
@@ -92,11 +93,15 @@ new MTLLoader( manager )
 
   } );
 
+
    new GLTFLoader( manager )
-  .setPath('/church/assets/church/')
+  .setPath('/church/assets/')
   .load ('scene.gltf', function ( object2 ){
-    
-      //object2.scene.scale.set(.5,.5,.5);
+    object2.scene.rotation.y = Math.PI/2;
+    //object2.scene.rotation.z = Math.PI/2;
+    object2.scene.position.y = 5.6;
+    object2.scene.position.x = -4.25;
+    object2.scene.scale.set(.25,.25,.25);
       scene.add(object2.scene);
       console.log("church worked",object2);
         }, onProgress, onError);
@@ -104,11 +109,11 @@ new MTLLoader( manager )
    new GLTFLoader( manager )
   .setPath('/church/assets/briefcase/')
   .load ('scene.gltf', function ( object3 ){
-      object3.scene.scale.set(.1,.1,.1);
+      object3.scene.scale.set(.04,.04,.04);
 
-      object3.scene.position.y = .5;
-      object3.scene.position.z = 14.8;
-      object3.scene.position.x = 4;
+      object3.scene.position.y = .65;
+      object3.scene.position.z = 8.38;
+      object3.scene.position.x = 0;
       object3.scene.rotation.y = Math.PI/4
       
       scene.add(object3.scene);

@@ -58,7 +58,7 @@ class Scene {
         //sphere1
         
         this.sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
-        this.sphere.position.set ( 0, 1, -2);
+        this.sphere.position.set ( 0, 1, 0);
         this.sphere.castShadow = true;
         this.scene.add (this.sphere);
         //audio
@@ -73,7 +73,7 @@ class Scene {
         //sphere2
         
         this.sphere2 = new THREE.Mesh( sphereGeometry, sphereMaterial );
-        this.sphere2.position.set ( 2, 1, -2);
+        this.sphere2.position.set ( 4.5, 1, 2);
         this.sphere2.castShadow = true;
         
         //audio 
@@ -89,7 +89,7 @@ class Scene {
         //sphere 3
         
         this.sphere3 = new THREE.Mesh( sphereGeometry, sphereMaterial );
-        this.sphere3.position.set ( -2, 1, -2);
+        this.sphere3.position.set ( -3, 1, -.8);
         //this.sphere3.rotation.x = Math.PI;
         this.sphere3.rotation.y = Math.PI/2;
         this.sphere3.castShadow = true;
