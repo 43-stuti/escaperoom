@@ -95,8 +95,8 @@ new MTLLoader( manager )
 
 
    new GLTFLoader( manager )
-  .setPath('/church/assets/')
-  .load ('scene.gltf', function ( object2 ){
+  .setPath('https://churchmodel.s3.us-east-2.amazonaws.com/churchmodel/')
+  .load ('church.glb', function ( object2 ){
     object2.scene.rotation.y = Math.PI/2;
     //object2.scene.rotation.z = Math.PI/2;
     object2.scene.position.y = 5.6;
