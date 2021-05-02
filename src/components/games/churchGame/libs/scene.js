@@ -377,7 +377,6 @@ class Scene {
     if (obj.name == "Mesh2 confessional_booth_2_1 Model")
 
     {
-      
     this.audioElement1.play();
     this.audioElement2.play();
     this.audioElement3.play();
