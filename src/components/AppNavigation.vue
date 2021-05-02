@@ -36,7 +36,7 @@
                 </router-link>
               </v-toolbar-side-icon>
               <v-toolbar-title class="subtitle-2 font-weight-regular green--text text--darken-2 hidden-sm-and-down mt-2">
-                <v-img class="mr-3" src="/pizzalogo.ico" height="30px" width="40px"> 
+                <v-img class="mr-3" src="/pizzalogo.png" height="50px" width="50px"> 
                   </v-img>
               </v-toolbar-title>
             <v-spacer class="hidden-md-and-up"></v-spacer>
