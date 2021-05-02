@@ -427,7 +427,6 @@ export default {
   }
   .colourPicker {
     height:60px;
-    z-index: 50;
     width: 2px;
     border-radius: 50%;
     margin-right: 10px;
@@ -435,19 +434,19 @@ export default {
   }
   #lens {
       position: absolute;
-      z-index: 20;
+      z-index: 15;
       width: 150px; 
       height: 150px;
       border-radius: 50%;
-      opacity:70%
+      opacity:90%
   }
   .rawItem {
-    z-index: 30;
+    z-index: 16;
     margin-bottom: 30px;
     font-weight: 600;
   }
   .rawItem1 {
-    z-index: 30;
+    z-index: 16;
     margin-bottom: -50px;
   }
   .pizza {
@@ -457,6 +456,6 @@ export default {
   #bowl {
   }
   .overlay1 {
-    z-index: 100;
+    z-index: 20;
   }
 </style>
