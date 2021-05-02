@@ -95,6 +95,8 @@ export default {
         font-weight: normal;
         font-style: normal;
     }
+    .main {
+    }
     .top {
         height: 20px;
         background-color: rgb(43, 43, 43);
@@ -104,7 +106,7 @@ export default {
         font-weight: 400;
         font-size: 14px;
         display: inline-block;
-        width: 100%;
+        width:250px;
         height: 100%;
         color: rgb(32, 32, 32);
         background-color: rgb(231, 231, 231);
