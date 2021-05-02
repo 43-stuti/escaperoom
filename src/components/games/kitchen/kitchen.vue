@@ -406,6 +406,7 @@ export default {
         font-style: normal;
     }
   .kitchenMain {
+    height: 100vh;
     background-color: rgb(22, 22, 22);
   }
   .KitchenHero {
@@ -427,6 +428,7 @@ export default {
   }
   .colourPicker {
     height:60px;
+     z-index: 16;
     width: 2px;
     border-radius: 50%;
     margin-right: 10px;
@@ -438,7 +440,7 @@ export default {
       width: 150px; 
       height: 150px;
       border-radius: 50%;
-      opacity:90%
+      opacity:90% !important
   }
   .rawItem {
     z-index: 16;
