@@ -36,7 +36,8 @@
                 </router-link>
               </v-toolbar-side-icon>
               <v-toolbar-title class="subtitle-2 font-weight-regular green--text text--darken-2 hidden-sm-and-down mt-2">
-                Sal's logo
+                <v-img class="mr-3" src="/pizzalogo.ico" height="30px" width="40px"> 
+                  </v-img>
               </v-toolbar-title>
             <v-spacer class="hidden-md-and-up"></v-spacer>
             <v-spacer class="hidden-md-and-up"></v-spacer>
