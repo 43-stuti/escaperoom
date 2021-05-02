@@ -424,7 +424,7 @@ export default {
   }
   .colourPicker {
     height:60px;
-     z-index: 16;
+    z-index: 16;
     width: 2px;
     border-radius: 50%;
     margin-right: 10px;
@@ -435,6 +435,7 @@ export default {
       z-index: 15;
       width: 150px; 
       height: 150px;
+      opacity: 0.9;
       border-radius: 50%;
   }
   .rawItem {
