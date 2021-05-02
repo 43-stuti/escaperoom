@@ -263,17 +263,17 @@ export default {
         {
           items:['blood','tomato','garlic'],
           ingredient:'Sauce',
-          message:'You found the special secret Sauce for the pizza!'
+          message:'You found the special secret sauce for the pizza!'
         },
         {
           items:['bone dust','flour','water'],
           ingredient:'Dough',
-          message:'You found the special cheese for the pizza'
+          message:'You found the special dough for the pizza'
         },
         {
           items:['flesh','oil'],
           ingredient:'Pepperoni',
-          message:'You found the special cheese for the pizza'
+          message:'You found the special pepperoni for the pizza'
         }
       ],
       currentColour:null,
