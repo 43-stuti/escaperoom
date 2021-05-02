@@ -2,8 +2,15 @@
   <div>
     <v-container class="kitchenMain"
     >
+     <v-overlay class="overlay1"
+            :absolute="absolute"
+            :opacity = 1
+            :value="overlay"
+          >
+          <h1>ESCAPED!!</h1>
+     </v-overlay>
       <v-row v-if="!absolute">
-         <v-col class = "mb-2" align = "center"
+         <v-col class = "mb-2 maker" align = "center"
                     :cols = 8
                     :lg = 8
                     :sm = 12
@@ -109,13 +116,7 @@
           </v-col>
       </v-row>
     </v-container>
-    <v-overlay class="overlay1"
-            :absolute="absolute"
-            :opacity = 1
-            :value="overlay"
-          >
-          <h1>ESCAPED!!</h1>
-     </v-overlay>
+   
   </div>
 </template>
 
@@ -407,18 +408,12 @@ export default {
     }
   .kitchenMain {
     height: 100vh;
-    background-color: rgb(22, 22, 22);
   }
   .KitchenHero {
     height: 100%;
     width: 100%;
     z-index: -1;
     color: rgb(0, 0, 0);
-  }
-  .Flowers {
-       z-index: 0;
-       position: absolute;
-       margin-top: -100px;
   }
   .mixer {
     height: 250px;
@@ -452,12 +447,15 @@ export default {
     margin-bottom: -50px;
   }
   .pizza {
-    background-color: '#FDF9F0' !important;
+    background-color: rgb(253, 231, 183);
     color: darkblue;
   }
   #bowl {
   }
   .overlay1 {
     z-index: 20;
+  }
+  .maker {
+    background-color: rgb(48, 48, 48);
   }
 </style>
