@@ -15,6 +15,7 @@
                     :lg = 8
                     :sm = 12
                     :md = 12>
+         
           <div v-if="currentColour" id="lens" v-bind:style="{backgroundColor:currentColour}">
           </div>
           <v-container>
@@ -435,7 +436,6 @@ export default {
       width: 150px; 
       height: 150px;
       border-radius: 50%;
-      opacity:90% !important
   }
   .rawItem {
     z-index: 16;
