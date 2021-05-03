@@ -41,7 +41,7 @@ class Scene {
       0.1,
       5000
     );
-    this.camera.position.set(0, 0, 6);
+    //this.camera.position.set(0, 0, 6);
     this.scene.add(this.camera);
 
     
@@ -191,7 +191,7 @@ class Scene {
 
     // https://threejs.org/docs/index.html#api/en/objects/Group
     this.playerGroup = new THREE.Group();
-    this.playerGroup.position.set(0, 2.3, 0);
+    this.playerGroup.position.set(0, .5, 0);
     this.playerGroup.add(_head);
     //this.playerGroup.add(_body);
 
@@ -211,12 +211,12 @@ class Scene {
 
     // set position of head before adding to parent object
 
-    _head.position.set(0, -1, 0);
+    _head.position.set(0, 0, 0);
     //_body.position.set(0,1,0);
 
     // https://threejs.org/docs/index.html#api/en/objects/Group
     var group = new THREE.Group();
-    group.position.set(0,-1,0);
+    group.position.set(0,.5,0);
     group.add(_head);
     //group.add(_body);
 
@@ -231,7 +231,7 @@ class Scene {
   }
 
   removeClient(_id) {
-    //this.scene.remove(this.socket.clients[_id].group);
+    this.scene.remove(this.socket.clients[_id].group);
     console.log(_id);
   }
 
